@@ -1,79 +1,126 @@
 \documentclass[]{article}
 \usepackage{multicol}
 \usepackage{setspace}
+\usepackage{mathrsfs}
 
 %opening
-\title{Signals and Systems - Formulae and Identities}
+\title{Analog and Digital Communications - Formulae and Identities}
 \begin{document}
 \maketitle
 
+\tableofcontents
+\newpage
+
+\section{Signals and Systems}
 \begin{multicols}{2}
-\section{Basics}
-\subsection{}
+	
+\subsection{Basics}
+\subsubsection{Normalized Energy}
 The normalized energy content $E$ of a signal $x(t)$ is defined as
 
-\[ E = \int_{-\infty}^{\infty} |x(t)|^{2}dt \]
+\begin{equation} E = \int_{-\infty}^{\infty} |x(t)|^{2}dt \label{norm_energy} \end{equation}
 
-\subsection{}
+\subsubsection{Average Power}
 The normalized average power $P$ of a signal $x(t)$ is defined as
 
-\[ P = \lim_{T \to \infty} \frac{1}{T} \int_{-T/2}^{T/2} |x(t)|^{2} dt \]
+\begin{equation} P = \lim_{T \to \infty} \frac{1}{T} \int_{-T/2}^{T/2} |x(t)|^{2} dt\label{norm_power}\end{equation} 
 
-\subsection{}
+\subsubsection{Dirac Delta Function}
 The unit impulse function (or Dirac delta function) $\delta (t)$ is defined as
 
-\[\delta (t) = \int_{-\infty}^{\infty} \phi(t) \delta (t)dt = \phi(0)\]
+\begin{equation}\delta (t) = \int_{-\infty}^{\infty} \phi(t) \delta (t)dt = \phi(0)\label{dirac_def}\end{equation}
 where $\phi (t) $ is any test function continuous at $t=0$. The unit impulse function is a \textit{generalized function}.
 
-\subsection{}
+\subsubsection{Derivatives of Generalized Functions}
 The derivative $g'(t)$ of a generalized function $g(t)$ is defined by
-\[\int_{-\infty}^{\infty} g'(t) \phi(t) dt = - \int_{-\infty}^{\infty} g(t) \phi '(t)dt\]
+\begin{equation}\int_{-\infty}^{\infty} g'(t) \phi(t) dt = - \int_{-\infty}^{\infty} g(t) \phi '(t)dt\label{gen_func_def} \end{equation}
 
-\subsection{}
+\subsubsection{Complex Fourier Series}
 The Fourier series for a signal $x(t)$ is defined as
 
-\[ x(t) = \sum_{n=-\infty}^{\infty} c_{n} e^{jn\omega_{0} t} \]
+\begin{equation} x(t) = \sum_{n=-\infty}^{\infty} c_{n} e^{jn\omega_{0}\label{complex_fourier_series} t}\end{equation}
 where $\omega_{0}$ is the fundamental angular frequency.
 The Fourier coefficients $c_{n}$ are given by
 
-\[ c_{n} = \frac{1}{T_{0}} \int_{-T_{0}/2}^{T_{0}/2} x(t) e^{-jn\omega_{0}t} dt \]
+\begin{equation} c_{n} = \frac{1}{T_{0}} \int_{-T_{0}/2}^{T_{0}/2} x(t) e^{-jn\omega_{0}t} dt\label{complex_fourier_coefs} \end{equation}
 A plot of $|c_{n}|$ vs $\omega$ is called the amplitude spectrum. A plot of $\theta_{n}$ (the phase constants of $c_{n}$) vs $\omega$ is called the phase spectrum. Together these are referred to as the frequency spectra.
-\subsection{}
+\subsubsection{Parseval's Theorem}
 Parseval's theorem states that for a periodic signal $x(t)$
-\[ \frac{1}{T_{0}} \int_{-T_{0}/2}^{T_{0}/2} |x(t)|^2dt = \sum_{n=-\infty}^{\infty} |c_{n}|^2 \]
+\begin{equation} \frac{1}{T_{0}} \int_{-T_{0}/2}^{T_{0}/2} |x(t)|^2dt = \sum_{n=-\infty}^{\infty} |c_{n}|^2\label{parsevals_theorem} \end{equation}
 
-\subsection{}
-The Fourier transform, $\mathcal{F}$, of a signal $x(t)$ is given by
-\[ X(\omega) = \mathcal{F}[x(t)] = \int_{-\infty}^{\infty}x(t)e^{-j\omega t}dt \]
+\subsubsection{Fourier Transform}
+The Fourier transform, $\mathscr{F}$, of a signal $x(t)$ is given by
+\begin{equation} X(\omega) = \mathscr{F}[x(t)] = \int_{-\infty}^{\infty}x(t)e^{-j\omega t}dt\label{complex_fourier_transform} \end{equation}
 
-\subsection{}
-The inverse Fourier transform of $X(\omega)$,  $\mathcal{F}^{-1}$, is given by
-\[ x(t) = \frac{1}{2\pi} \int_{-\infty}^{\infty}X(\omega)e^{j\omega t} d\omega \]
+\subsubsection{Inverse Fourier Transform}
+The inverse Fourier transform of $X(\omega)$,  $\mathscr{F}^{-1}$, is given by
+\begin{equation} x(t) = \frac{1}{2\pi} \int_{-\infty}^{\infty}X(\omega)e^{j\omega t} d\omega\label{inv_complex_fourier_transform} \end{equation}
 
-\section{Properties of the Fourier Transform}
+\subsection{Properties of the Fourier Transform}
 $ x(t) \longleftrightarrow X(\omega)$ denotes a Fourier transform pair.
-\subsection{Linearity}
-\[ a_{1} x_{1}(t) + a_{2} x_{2}(t) \longleftrightarrow a_{1} X_{1}(\omega) + a_{2} X_{2}(\omega) \]
-\subsection{Time Shifting}
-\[ x(t-t_{0}) \longleftrightarrow X(\omega)e^{-j\omega t_{0}} \]
-\subsection{Frequency Shifting}
-\[ x(t)e^{j\omega_{0} t} \longleftrightarrow X(\omega - \omega_{0}) \]
-\subsection{Scaling}
-\[ x(at) \longleftrightarrow \frac{1}{|a|}X(\frac{\omega}{a}) \]
-\subsection{Time Reversal}
-\[ x(-t) \longleftrightarrow X(-\omega) \]
-\subsection{Duality}
-\[ X(t) \longleftrightarrow 2\pi x(-\omega) \]
-\subsection{Differentiation}
+\subsubsection{Linearity}
+\begin{equation} a_{1} x_{1}(t) + a_{2} x_{2}(t) \longleftrightarrow a_{1} X_{1}(\omega) + a_{2} X_{2}(\omega)\label{fourier_linearity} \end{equation}
+\subsubsection{Time Shifting}
+\begin{equation} x(t-t_{0}) \longleftrightarrow X(\omega)e^{-j\omega t_{0}}\label{fourier_time_shifting} \end{equation}
+\subsubsection{Frequency Shifting}
+\begin{equation} x(t)e^{j\omega_{0} t} \longleftrightarrow X(\omega - \omega_{0})\label{fourier_frequency_shifting} \end{equation}
+\subsubsection{Scaling}
+\begin{equation} x(at) \longleftrightarrow \frac{1}{|a|}X(\frac{\omega}{a})\label{fourier_scaling} \end{equation}
+\subsubsection{Time Reversal}
+\begin{equation} x(-t) \longleftrightarrow X(-\omega)\label{fourier_time_reversal} \end{equation}
+\subsubsection{Duality}
+\begin{equation} X(t) \longleftrightarrow 2\pi x(-\omega)\label{fourier_duality} \end{equation}
+\subsubsection{Differentiation}
 Time differentiation
-\[ x'(t) = \frac{d}{dt}x(t) \longleftrightarrow j\omega X(\omega) \]
+\begin{equation} x'(t) = \frac{d}{dt}x(t) \longleftrightarrow j\omega X(\omega)\label{fourier_time_differentiation}\end{equation}
 Frequency differentiation
-\[ (-jt)x(t) \longleftrightarrow X'(\omega) = \frac{d}{d\omega}X(\omega) \]
-\subsection{Integration}
-\[ \int_{-\infty}^{t} x(\tau)d\tau \longleftrightarrow \frac{1}{j\omega}X(\omega) + \pi X(0)\delta(\omega) \]
+\begin{equation} (-jt)x(t) \longleftrightarrow X'(\omega) = \frac{d}{d\omega}X(\omega)\label{fourier_freq_differentiation} \end{equation}
+\subsubsection{Integration}
+\begin{equation} \int_{-\infty}^{t} x(\tau)d\tau \longleftrightarrow \frac{1}{j\omega}X(\omega) + \pi X(0)\delta(\omega)\label{fourier_integration}\end{equation}
 
-\section{Convolutions}
+\subsection{Convolutions and Correlation}
+The convolution of two signals $x_{1}(t)$ and $x_{2}(t)$ is
+\begin{equation} x_{1}(t) * x_{2}(t) = \int_{-\infty}^{\infty} x_{1}(\tau) x_{2}(t-\tau)d\tau\label{convolution_def} \end{equation}
+\subsubsection{Time Convolution Theorem}
+\begin{equation} x_{1}(t) * x_{2}(t) \longleftrightarrow X_{1}(\omega) X_{2}(\omega)\label{time_convolution_thrm}\end{equation} 
+\subsubsection{Frequency Convolution Theorem}
+\begin{equation}x_{1}(t)x_{2}(t) \longleftrightarrow \frac{1}{2\pi}X_{1}(\omega)*X_{2}(\omega)\label{freq_convolution_thrm} \end{equation}
+\subsubsection{Cross-Correlation}
+The cross correlation $R_{12}(\tau)$ of signals $x_{1}(t)$ and $x_{2}(t)$ is defined by
+\begin{equation}R_{12}(\tau) = \int_{-\infty}^{\infty}x_{1}(t)x_{2}(t-\tau)dt\label{cross_corr_defn} \end{equation}
+\subsubsection{Autocorrelation}
+The autocorrelation is defined as the cross-correlation of a signal $x_{1}(t)$ with itself, $R_{11}(\tau)$.
+\subsubsection{Energy Spectral Density}
+The energy spectral density $S_{11}$ of a signal $x_{1}(t)$ is given by
+\begin{equation}S_{11}(\omega) = \mathscr{F}[R_{11}(\tau)] = \int_{-\infty}^{\infty}R_{11}(\tau)e^{-j\omega \tau}d\omega\label{energy_spectral_density} \end{equation}
+\subsection{Linear Time-Invariant Systems}
+Linear time-invariant (linear time-invariant) systems have several properties, as follows. Suppose $\mathcal{F}$ is an operator representing the action of a system with output $y(t)$.
+\subsubsection{Additivity}
+\begin{equation}\mathcal{F}[x_{1}(t) +x_{2}(t)] = \mathcal{F}[x_{1}(t)] + \mathcal{F}[x_{2}(t)]\label{lti_additivity}\end{equation}
+\subsubsection{Homogeneity}
+\begin{equation}\mathcal{F}[ax(t)] = a\mathcal{F}[x(t)]\label{lti_homogeneity} \end{equation}
+\subsubsection{Time-Invariance}
+\begin{equation}\mathcal{F}[x(t-t_{0})] = y(t-t_{0})\label{lti_time_invariance} \end{equation}
+\subsubsection{Impulse Response}
+The impulse response $h(t)$ of an LTI system is the response of the system with a delta function input
+\begin{equation} h(t) = \mathcal{F}[\delta(t)] \label{impulse_response_def}\end{equation}
+\subsubsection{Response to Arbitrary Inputs}
+The response of an LTI system to an arbitrary input can be expressed in terms of a convolution with the impulse response of the system
+\begin{equation}y(t) = x(t)*h(t)=\int_{-\infty}^{\infty}x(\tau)h(t-\tau)d\tau\label{lti_system_response} \end{equation}
+\subsubsection{Causality}
+A signal $x(t)$ is causal if, for $t<0$, $x(t)=0$.
+\subsubsection{Frequency Response}
+Using the time convolution theorem ($\ref{time_convolution_thrm}$) on the response of an LTI system ($\ref{lti_system_response}$), we find that
+\begin{equation} Y(\omega) = X(\omega)H(\omega) \label{freq_response} \end{equation}
+where $Y(\omega)=\mathscr{F}[y(t)]$ and $H(\omega)=\mathscr{F}[h(t)]$. We refer to $H(\omega)$ as the \textit{frequency response} or \textit{transfer function}.
+\subsubsection{Input and Output Spectral Densities}
+\begin{equation} S_{yy}(\omega) = |H(\omega)|^{2} S_{xx}(\omega)  \end{equation}
+\begin{equation}\bar{S}_{yy}(\omega) = |H(\omega)|^{2} \bar{S}_{xx}(\omega)  \end{equation}
 
+\end{multicols}
+
+\section{Amplitude Modulation}
+\begin{multicols}{2}
 
 \end{multicols}
 \end{document}

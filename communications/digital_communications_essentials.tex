@@ -2,6 +2,11 @@
 \usepackage{multicol}
 \usepackage{setspace}
 \usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage[labelfont=bf]{caption}
+
+\setcounter{tocdepth}{2} 
 
 %opening
 \title{Analog and Digital Communications - Formulae and Identities}
@@ -12,7 +17,7 @@
 \newpage
 
 \section{Signals and Systems}
-\begin{multicols}{2}
+%\begin{multicols}{2}
 	
 \subsection{Basics}
 \subsubsection{Normalized Energy}
@@ -78,6 +83,9 @@ Frequency differentiation
 \subsubsection{Integration}
 \begin{equation} \int_{-\infty}^{t} x(\tau)d\tau \longleftrightarrow \frac{1}{j\omega}X(\omega) + \pi X(0)\delta(\omega)\label{fourier_integration}\end{equation}
 
+\subsubsection{Modulation Theorem}
+\begin{equation} x(t)cos(\omega_{0}t) \longleftrightarrow \frac{1}{2}X(\omega - \omega_{0}) + \frac{1}{2}X(\omega + \omega_{0})\label{modulation_theorem}\end{equation}
+
 \subsection{Convolutions and Correlation}
 The convolution of two signals $x_{1}(t)$ and $x_{2}(t)$ is
 \begin{equation} x_{1}(t) * x_{2}(t) = \int_{-\infty}^{\infty} x_{1}(\tau) x_{2}(t-\tau)d\tau\label{convolution_def} \end{equation}
@@ -117,10 +125,72 @@ where $Y(\omega)=\mathscr{F}[y(t)]$ and $H(\omega)=\mathscr{F}[h(t)]$. We refer 
 \begin{equation} S_{yy}(\omega) = |H(\omega)|^{2} S_{xx}(\omega)  \end{equation}
 \begin{equation}\bar{S}_{yy}(\omega) = |H(\omega)|^{2} \bar{S}_{xx}(\omega)  \end{equation}
 
-\end{multicols}
-
+%\end{multicols}
+\newpage
 \section{Amplitude Modulation}
-\begin{multicols}{2}
+Modulation is defined as the process by which some characteristic of a carrier signal is varied in accordance with a modulating signal (message signal). There are two basic types of analog modulation; continuous wave (CW) modulation and pulse modulation.
 
-\end{multicols}
+%\begin{multicols}{2}
+\subsection{Continuous-Wave Modulation}
+In continuous-wave modulation, a sinusoidal signal is used as a carrier signal. The modulated carrier signal $x_{c}(t)$ is given by
+\begin{equation} x_{c}(t) = A(t)cos[\omega_{c}t + \phi (t)] \label{cw_carrier_signal} \end{equation}
+Let $m(t)$ be the message signal.
+\subsubsection{Double-Sideband Modulation}
+Double-sideband (DSB) modulation occurs when $m(t) = A(t)$. The DSB modulated signal $x_{DSB}(t)$ is then given by
+\begin{equation} x_{DSB}(t) = m(t)cos(\omega_{c}t) \label{dsb_carrier_signal} \end{equation}
+By applying the modulation theorem ($\ref{modulation_theorem}$), we obtain the following
+\begin{equation} X_{DSB}(\omega) = \frac{1}{2}M(\omega - \omega_{c}) + \frac{1}{2}M(\omega + \omega_{c}) \label{dsb_fourier_transform} \end{equation}
+See figure $\ref{fig:dsb_modulation}$ for an example.
+
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]{figs/amplitude_modulation/dsb/message_signal.png}
+		\caption{Message signal}
+		\label{fig:dsb_message_signal}
+	\end{subfigure}
+	~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+	%(or a blank line to force the subfigure onto a new line)
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]{figs/amplitude_modulation/dsb/carrier_signal.png}
+		\caption{Carrier signal}
+		\label{fig:dsb_carrier_signal}
+	\end{subfigure}
+	~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+	%(or a blank line to force the subfigure onto a new line)
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]{figs/amplitude_modulation/dsb/modulated_signal.png}
+		\caption{Modulated signal}
+		\label{fig:dsb_modulated_signal}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]{figs/amplitude_modulation/dsb/message_signal_freq.png}
+		\caption{Message signal}
+		\label{fig:dsb_message_signal_freq}
+	\end{subfigure}
+	~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+	%(or a blank line to force the subfigure onto a new line)
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]{figs/amplitude_modulation/dsb/carrier_signal_freq.png}
+		\caption{Carrier signal}
+		\label{fig:dsb_carrier_signal_freq}
+	\end{subfigure}
+	~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+	%(or a blank line to force the subfigure onto a new line)
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]{figs/amplitude_modulation/dsb/modulated_signal_freq.png}
+		\caption{Modulated signal}
+		\label{fig:dsb_modulated_signal_freq}
+	\end{subfigure}
+	\caption{Modulating a message signal onto a carrier signal with DSB modulation. Plots (a), (b) and (c) display signals in the time domain, whereas (d), (e) and (c) display the signals in the frequency domain. Note how the carrier signal frequency gets split into two smaller peaks. These are referred to as the upper and lower sidebands.}\label{fig:dsb_modulation}
+\end{figure}
+
+\subsubsection{Ordinary Amplitude Modulation}
+
+\subsubsection{Single-Sideband Modulation}
+
+\subsubsection{Vestigial-Sideband Modulation}
+
+
+%\end{multicols}
 \end{document}

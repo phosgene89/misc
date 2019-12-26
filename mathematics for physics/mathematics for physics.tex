@@ -1,0 +1,88 @@
+\documentclass[]{article}
+\usepackage[parfill]{parskip}
+\usepackage{amsmath}
+
+%opening
+\title{Notes for Mathematics for Physics: A Guided Tour for Graduate Students}
+\author{Gregory Feldmann}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section{Calculus of variations}
+
+A functional $J$ is a map $J:C^{\infty}(\mathcal{R}) \rightarrow \mathcal{R}$. We restrict ourselves to functionals of the form
+
+\begin{equation} J[y] = \int_{x_{1}}^{x_{2}} F(x,y,y^{(1)},y^{(2)},...)dx \label{functional_def} \end{equation}
+where $y^{(n)}$ denotes the $n^{th}$ derivative of $y$ with respect to $x$.
+
+\subsection{Minimising functionals of $y$ and $y_{x}$}
+
+For $J=\int Fdx$, where $f$ depends only on $x$, $y$ and $y'$, we show how to derive the Euler-Lagrange equation and find the $y$ that optimises $J$. 
+
+Let $\epsilon$ be a small, arbitrary real number, $\eta$ an arbitrary function of x and $y$ an arbitrary function of $x$ in $C^{\infty}$. A small perturbation in $y$ is given by $y = y^{*} + \epsilon \eta$, where $y^{*}$ is the unperturbed $y$. Also let $\delta J = J[y^{*} + \epsilon \eta] - J[y^{*}] $ and $\delta  F = \{ F(x, y, y^{1})-F(x,y^{*},y^{*(1)}) \}$, where $\delta$ is the variation operator. The change in $J$ associated with going from $y$ to $y^{*} + \epsilon \eta$ is given by
+\begin{equation} \delta J = \int_{x_{1}}^{x_{2}} \delta  F dx \label{variational_functional_example}\end{equation}
+
+A necessary condition for the minimisation of $J$ is $\delta J= 0$. We then use a Taylor expansion of $\delta F$ around $\epsilon = 0$, discarding all terms second order and above.
+
+\begin{equation} \delta F \approx \epsilon \bigg(\frac{\partial F}{\partial y} \eta+ \frac{\partial F}{\partial y^{(1)}}\eta^{(1)}\bigg) \label{taylor_expansion_example} \end{equation}
+Using integration by parts, we can find an alternate expression for $\frac{\partial F}{\partial y^{(1)}}\eta^{(1)}$
+
+\begin{equation*} \int_{x_{1}}^{x_{2}} \frac{\partial F}{\partial y^{(1)}}\eta^{(1)}dx = \frac{\partial F}{\partial y^{(1)}}\eta \bigg|_{x_1}^{x_{2}} - \int_{x_{1}}^{x_{2}} \frac{d}{dx}\frac{\partial F}{\partial y^{(1)}}\eta dx\end{equation*}
+
+As we assume $\epsilon =0$ at $x_{1}$ and $x_{2}$, $\frac{\partial F}{\partial y^{(1)}}\eta \bigg|_{x_1}^{x_{2}} = 0$. So we have
+
+\begin{equation*} \frac{\partial F}{\partial y^{(1)}}\eta^{(1)} = - \frac{d}{dx}\frac{\partial F}{\partial y^{(1)}}\eta \end{equation*}
+
+We substitute this into ($\ref{taylor_expansion_example}$) to obtain
+
+\begin{equation*} \delta F \approx \epsilon \eta \bigg(\frac{\partial F}{\partial y} - \frac{d}{dx}\frac{\partial F}{\partial y^{(1)}}\bigg) \label{simplified_taylor_expansion} \end{equation*}
+
+Substituting this expression into ($\ref{variational_functional_example}$) results in
+
+\begin{equation*} \int_{x_{1}}^{x_{2}} \delta F dx = \int_{x_{1}}^{x_{2}} \epsilon \eta \bigg(\frac{\partial F}{\partial y} - \frac{d}{dx}\frac{\partial F}{\partial y^{(1)}}\bigg) dx = 0 \label{variational_eta_final} \end{equation*}
+
+Supposing that $\eta$ and $\epsilon$ are not identically zero, we conclude that 
+
+\begin{equation} \frac{\partial F}{\partial y} - \frac{d}{dx}\frac{\partial F}{\partial y^{(1)}} = 0 \label{euler_lagrange_eq1} \end{equation}
+
+($\ref{euler_lagrange_eq1}$) is known as the \textit{Euler-Lagrange equation}. It is also referred to as the functional derivative of $\delta J$ with respect to $y$.
+
+\subsection{Functionals of higher order derivatives}
+If $F$ is a function of higher order derivatives of $y$, e.g. $y^{(5)}$ or $y^{(26)}$, then the Euler-Lagrange equation is extended as follows. Suppose $F$ is a function of the $n^{th}$ order derivative of $y$. The Euler-Lagrange equation is
+
+\begin{equation} \frac{\partial F}{\partial y} + \sum_{i=1}^{n} (-1)^{i}\frac{d^{i}}{dx^{i}} \bigg(\frac{\partial F}{\partial y^{(i)}}\bigg) = 0 \end{equation}  
+
+\subsection{Minimising functionals of multiple functions}
+When $F$ is a function of multiple functions $y_{i}$ and their derivatives $y_{ix}$, where each $y_{i}$ is a function of $x$, then we get a separate Euler-Lagrange equation for each $y_{i}$
+
+\begin{equation} \frac{\partial F}{\partial y_{i}} - \frac{d}{dx}\frac{\partial F}{\partial y_{i}^{(1)}} = 0 \end{equation}
+
+\subsection{Functionals of multiple functions and higher order derivatives}
+Combining the previous two sections, the Euler-Lagrange equations for functionals of multiple functions $y_{i}$ and higher order derivatives $y_{i}^{(n)}$ are given by
+
+\begin{equation} \frac{\partial F}{\partial y_{i}} + \sum_{k=1}^{n} (-1)^{k}\frac{d^{k}}{dx^{k}} \bigg(\frac{\partial F}{\partial y^{(k)}_{i}}\bigg) = 0 \end{equation}  
+
+for each $i$ corresponding to a $y_{i}$.
+
+\subsection{Examples}
+test
+\subsection{Variable end points}
+test
+
+\bibliographystyle{amsplain}
+
+\bibliography{refs}
+
+\section{Function spaces}
+
+\section{Linear ordinary differential equations}
+
+\section{Linear differential operators}
+
+\section{Green functions}
+
+\end{document}

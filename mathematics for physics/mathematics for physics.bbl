@@ -7,8 +7,15 @@
 \providecommand{\href}[2]{#2}
 \begin{thebibliography}{1}
 
+\bibitem{huntcalculusvariations}
+R.~E. Hunt, \emph{Chapter 1 variational methods}, 2002.
+
 \bibitem{schechter1967variational}
 R.S. Schechter, \emph{The variational method in engineering}, McGraw-Hill
   chemical engineering series, McGraw-Hill, 1967.
+
+\bibitem{a1b355c8735b4d728055107aa8b9234a}
+Michael Stone and Paul Goldbart, \emph{Mathematics for physics: A guided tour
+  for graduate students}, Cambridge University Press, United States, 2009.
 
 \end{thebibliography}

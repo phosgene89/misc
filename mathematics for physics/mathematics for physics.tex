@@ -14,16 +14,16 @@
 
 \section{Calculus of variations}
 
-A functional $J$ is a map $J:C^{\infty}(\mathcal{R}) \rightarrow \mathcal{R}$. We restrict ourselves to functionals of the form
+A functional $J$ is a map $J:C^{\infty}(\mathcal{R}^{n}) \rightarrow \mathcal{R}$. We restrict ourselves to functionals of the form
 
 \begin{equation} J[y] = \int_{x_{1}}^{x_{2}} F(x,y,y^{(1)},y^{(2)},...)dx \label{functional_def} \end{equation}
 where $y^{(n)}$ denotes the $n^{th}$ derivative of $y$ with respect to $x$.
 
-\subsection{Minimising functionals of $y$ and $y_{x}$}
+\subsection{Functionals of $y$ and $y^{(1)}$}
 
 For $J=\int Fdx$, where $f$ depends only on $x$, $y$ and $y'$, we show how to derive the Euler-Lagrange equation and find the $y$ that optimises $J$. 
 
-Let $\epsilon$ be a small, arbitrary real number, $\eta$ an arbitrary function of x and $y$ an arbitrary function of $x$ in $C^{\infty}$. A small perturbation in $y$ is given by $y = y^{*} + \epsilon \eta$, where $y^{*}$ is the unperturbed $y$. Also let $\delta J = J[y^{*} + \epsilon \eta] - J[y^{*}] $ and $\delta  F = \{ F(x, y, y^{1})-F(x,y^{*},y^{*(1)}) \}$, where $\delta$ is the variation operator. The change in $J$ associated with going from $y$ to $y^{*} + \epsilon \eta$ is given by
+Let $\epsilon$ be a small, arbitrary real number, $\eta$ an arbitrary function of x and $y$ an arbitrary function of $x$ in $C^{\infty}$. A small perturbation in $y$ is given by $y = y^{*} + \epsilon \eta$, where $y^{*}$ is the unperturbed $y$. Also let $\delta J = J[y^{*} + \epsilon \eta] - J[y^{*}] $ and $\delta  F = \{ F(x, y, y^{(1)})-F(x,y^{*},y^{*(1)}) \}$, where $\delta$ is the variation operator. The change in $J$ associated with going from $y$ to $y^{*} + \epsilon \eta$ is given by
 \begin{equation} \delta J = \int_{x_{1}}^{x_{2}} \delta  F dx \label{variational_functional_example}\end{equation}
 
 A necessary condition for the minimisation of $J$ is $\delta J= 0$. We then use a Taylor expansion of $\delta F$ around $\epsilon = 0$, discarding all terms second order and above.
@@ -49,14 +49,14 @@ Supposing that $\eta$ and $\epsilon$ are not identically zero, we conclude that
 
 \begin{equation} \frac{\partial F}{\partial y} - \frac{d}{dx}\frac{\partial F}{\partial y^{(1)}} = 0 \label{euler_lagrange_eq1} \end{equation}
 
-($\ref{euler_lagrange_eq1}$) is known as the \textit{Euler-Lagrange equation}. The expression on the left hand side is referred to as the functional derivative of $\delta J$ with respect to $y$.
+($\ref{euler_lagrange_eq1}$) is known as an \textit{Euler-Lagrange equation}. The expression on the left hand side is referred to as the functional derivative of $\delta J$ with respect to $y$.
 
 \subsection{Functionals of higher order derivatives}
-If $F$ is a function of higher order derivatives of $y$, e.g. $y^{(5)}$ or $y^{(26)}$, then the Euler-Lagrange equation is extended as follows. Suppose $F$ is a function of the $n^{th}$ order derivative of $y$. The Euler-Lagrange equation is
+If $F$ is a function of higher order derivatives of $y$, e.g. $y^{(5)}$ or $y^{(26)}$, then the Euler-Lagrange equation is extended as follows. Suppose $F$ is a function of the $N^{th}$ order derivative of $y$. The Euler-Lagrange equation is
 
-\begin{equation} \frac{\partial F}{\partial y} + \sum_{i=1}^{n} (-1)^{i}\frac{d^{i}}{dx^{i}} \bigg(\frac{\partial F}{\partial y^{(i)}}\bigg) = 0 \end{equation}  
+\begin{equation} \frac{\partial F}{\partial y} + \sum_{n=1}^{N} (-1)^{n}\frac{d^{n}}{dx^{n}} \bigg(\frac{\partial F}{\partial y^{(n)}}\bigg) = 0 \end{equation}  
 
-\subsection{Minimising functionals of multiple functions}
+\subsection{Functionals of multiple functions}
 When $F$ is a function of multiple functions $y_{i}$ and their derivatives $y_{ix}$, where each $y_{i}$ is a function of $x$, then we get a separate Euler-Lagrange equation for each $y_{i}$
 
 \begin{equation} \frac{\partial F}{\partial y_{i}} - \frac{d}{dx}\frac{\partial F}{\partial y_{i}^{(1)}} = 0 \end{equation}
@@ -64,18 +64,58 @@ When $F$ is a function of multiple functions $y_{i}$ and their derivatives $y_{i
 \subsection{Functionals of multiple functions and higher order derivatives}
 Combining the previous two sections, the Euler-Lagrange equations for functionals of multiple functions $y_{i}$ and higher order derivatives $y_{i}^{(n)}$ are given by
 
-\begin{equation} \frac{\partial F}{\partial y_{i}} + \sum_{k=1}^{n} (-1)^{k}\frac{d^{k}}{dx^{k}} \bigg(\frac{\partial F}{\partial y^{(k)}_{i}}\bigg) = 0 \end{equation}  
+\begin{equation} \frac{\partial F}{\partial y_{i}} + \sum_{n=1}^{N} (-1)^{n}\frac{d^{n}}{dx^{n}} \bigg(\frac{\partial F}{\partial y^{(n)}_{i}}\bigg) = 0 \end{equation}  
 
 for each $i$ corresponding to a $y_{i}$.
 
+\subsection{Functionals of multiple functions, multiple independent variables and higher order derivatives}
+The next logical step is to introduce multiple independent variables. Let $\mu_{m}$ be indices spanning the independent variables $x_{\mu_{m}}$. Let $y^{(n)_{\mu_{m}}}_{i}$ denote the $n^{th}$ partial derivative of $y_{i}$ with respect to $x_{\mu_{m}}$. Given a total of M independant variables, functionals of multiple functions $y_{i}$ and higher order derivatives $y^{(n)_{\mu_{m}}}_{i}$, the Euler-Lagrange equation for each $y_{i}$  is as follows
+
+\begin{equation} \frac{\partial F}{\partial y_{i}} +  \sum_{n=1}^{N} \sum_{\mu_{1} \leq ...\leq \mu_{n}} (-1)^{n}\frac{d^{n}}{d x_{\mu_{1}}...d x_{\mu_{n}}} \bigg(\frac{\partial F}{\partial y^{(1)_{\mu_{1}}}_{i} ...\partial y^{(1)_{\mu_{n}}}_{i}}\bigg) = 0 \label{eulerlagrange_higherderivatives_functions_variables} \end{equation}  
+Note that $\mu_{m}$ is an arbitrary reference to any $x_m$. Hence $x_{\mu_{1}}$ may be equal to $x_{\mu{2}}$ even though $x_{1} \neq x_{2}$. For $3$ independent variables $x_{1}$, $x_{2}$ and $x_{3}$, and $n=2$, we have that
+
+\begin{equation*} \sum_{\mu_{1} \leq ...\leq \mu_{2}}d x_{\mu_{1}}d x_{\mu_{2}} = d x_{\mu_{1}}^{2} + d x_{\mu_{1}}d x_{\mu_{2}} + d x_{\mu_{1}}d x_{\mu_{3}}+d x_{\mu_{2}}^{2} + d x_{\mu_{2}}d x_{\mu_{3}} + d x_{\mu_{3}}^{2}\end{equation*}
+
+For the sample example, but with $n=1$, we have
+\begin{equation*} \sum_{\mu_{1} \leq ...\leq \mu_{1}}d x_{\mu_{1}}d x_{\mu_{1}} = d x_{\mu_{1}}^{2} + d x_{\mu_{2}}^{2} + d x_{\mu_{3}}^{2}\end{equation*}
+\subsection{Constraints}
+We will frequently want to find the stationary point of $\delta J$ subject to certain constraints. 
+\subsubsection{Integral constraints}
+The simplest constraints are integral constraints 
+
+\begin{equation} K = \int_{x_{1}}^{x_{2}} G(x, y, y^{(1)},y^{(2)},...) dx \label{integral_constraint}\end{equation}
+
+where $K$ is a constant and $G$ is a functional.
+
+To incorporate this into our Euler-Lagrange equations, we define $F_{c}$ as follows
+
+\begin{equation*} F_{c} = F + \lambda G \end{equation*}
+
+and work with $F_{c}$ in the same way we would with $F$, subject to the constraints being satisfied. e.g. ($\ref{eulerlagrange_higherderivatives_functions_variables}$) becomes
+\begin{equation*} \frac{\partial F_{c}}{\partial y_{i}} +  \sum_{n=1}^{N} \sum_{\mu_{1} \leq ...\leq \mu_{n}} (-1)^{n}\frac{d^{n}}{d x_{\mu_{1}}...d x_{\mu_{n}}} \bigg(\frac{\partial F_{c}}{\partial y^{(1)_{\mu_{1}}}_{i} ...\partial y^{(1)_{\mu_{n}}}_{i}}\bigg) = 0 \end{equation*}  
+and our solutions must also satisfy ($\ref{integral_constraint}$).
+
+Given multiple functionals $G_{m}$ in integral constraints, $F_{c}$ is given by
+
+\begin{equation*} F_{c} = F + \sum_{m} \lambda_{m} G_{m} \end{equation*}
+and solutions to the Euler-Lagrange equations must satisfy the constraints.
+\subsubsection{Holonomic constraints}
+Equivalence constraints not involving derivatives of functions that can be expressed without an integral are referred to as holonomic constraints. They take the form
+
+\begin{equation} K = G(x,y) \end{equation}
+where $G$ and $K$ are defined as in the previous section. We now define $F_{c}$ as
+\begin{equation} F_{c} = F + \int_{x_{1}}^{x_{2}} \lambda (x) G(x,y)dx \end{equation}
+where $\lambda (x)$ is a Lagrange multiplier. Take note that our Lagrange multiplier is now dependant on our independent variables. Given $F_{c}$, we proceed in the same manner as for integral constraints.
+\subsubsection{Non-holonomic constraints}
+Non-holonomic constraints are equivalence constraints that involve derivatives of functions. They are not covered.
 \subsection{Examples}
-test
+\subsubsection{Lagrangian mechanics}
 \subsection{Variable end points}
 test
-
+\nocite{*}
+\bibliography{refs}
 \bibliographystyle{amsplain}
 
-\bibliography{refs}
 
 \section{Function spaces}
 

@@ -285,6 +285,46 @@ Vestigial-sideband modulation is similar to DSB, except one sideband is attenuat
 \subsection{Frequency Translation and Mixing}
 Test
 
+\newpage
+\section{Angle Modulation}
+Angle modulation includes both phase modulation (PM) and frequency modulation (FM). We again use a sinusoidal carrier signal 
+\begin{equation}x_{c}(t) = Acos[\omega_{c}t+\phi(t)] \label{message_signal_sinusoidal_mod}\end{equation}
+However, instead of modifying the amplitude $A$, we modify the phase angle $\phi(t)$ by making it a function of the message signal $m(t)$.
+
+
+Let $\theta(t) = \omega_{c}t+\phi(t)$. Then the instantaneous radian frequency of $x_{c}(t)$ is given by 
+\begin{equation} \omega_{inst} = \frac{d \theta(t)}{dt} = \omega_{c}+ \frac{d \phi(t)}{dt} \end{equation} 
+\subsection{Phase Modulation}
+In phase modulation, we let the phase angle $\phi(t) = k_{p}m(t)$, where $k_{p}$ is the phase deviation constant.
+\subsection{Frequency Modulation}
+In frequency modulation, we set $\frac{d\phi(t)}{dt} = k_{f}m(t)$, where $k_{f}$ is the frequency deviation constant. Integrating over $m(t)$, we find the following expression for $\phi(t)$
+\begin{equation} \phi(t) = k_{f} \int_{t_{0}}^{t} m(\lambda) + \phi(t_{0}) \end{equation}
+We usually let $t_{0} = -\infty$ and $\phi(-\infty)=0$.
+\subsection{Sinusoidal Angle Modulation}
+Sinusoidal message signals result in a phase angle of
+\begin{equation} \phi(t) = \beta sin(\omega_{m}t) \label{sinusoidal_mod_phase_angle}\end{equation}
+$\beta$ is referred to as the modulation index and gives the maximum value of phase deviation. $\beta$ can be expressed as 
+\begin{equation} \beta = \frac{\Delta \omega}{\omega_{m}} \end{equation}
+where $\Delta \omega$ is the maximum frequency deviation. Substituting ($\ref{sinusoidal_mod_phase_angle}$) into ($\ref{message_signal_sinusoidal_mod}$) and expressing it as a Fourier series, we obtain
+\begin{equation} x_{c}(t) = A \sum_{n=-\infty}^{\infty} J_{n}(\beta)cos(\omega_{c}+n\omega_{m})t \end{equation}
+where $J_{n}(\beta)$ are Bessel functions of order $n$. Three things should be noted:
+\begin{enumerate}
+	\item The signal is composed of a carrier frequency with infinite harmonic sidebands.
+	\item The aplitude is dependant on $J_{n}(\beta)$, which gets smaller with larger values of $|n|$.
+	\item $\beta$ also determines the number of significant spectral lines, with smaller $\beta$ resulting in fewer significant sidebands and greater $\beta$ resulting in more numerous significant sidebands.
+\end{enumerate}
+\subsection{Bandwidth of Angle Modulated Signals}
+\subsubsection{Sinusoidal Modulation}
+The bandwidth $W_{B}$ of a signal with sinusoidal modulation is approximately given as follows
+\begin{equation} W_{B} \approx 2(\beta + 1)\omega_{m} \end{equation}
+\subsubsection{Arbitrary Modulation}
+The Deviation radio $D$ is defined as
+\begin{equation} D = \frac{\Delta \omega}{\omega_{M}} \end{equation}
+for a message signal bandwidth $\omega_{M}$. The bandwidth of the modulated signal is then given as
+\begin{equation} W_{B} \approx 2(D +1)\omega_{M} \end{equation}
+$W_{B}$ contains $98\%$ of signal power.
+\section{Digital Transmission of Analog Signals}
+test
 \bibliographystyle{amsplain}
 
 \bibliography{refs}

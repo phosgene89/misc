@@ -1,35 +1,38 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.11.2)  29 DEC 2019 17:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.12.21)  30 DEC 2019 14:09
 entering extended mode
-**./digital_communications_essentials.tex
-(digital_communications_essentials.tex
-LaTeX2e <2018-04-01> patch level 5
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**digital_communications_essentials.tex
+(./digital_communications_essentials.tex
+LaTeX2e <2017-04-15>
+Babel <3.18> and hyphenation patterns for 3 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\size10.clo"
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
-\c@part=\count80
-\c@section=\count81
-\c@subsection=\count82
-\c@subsubsection=\count83
-\c@paragraph=\count84
-\c@subparagraph=\count85
-\c@figure=\count86
-\c@table=\count87
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\tools\multicol.sty"
-Package: multicol 2018/04/20 v1.8s multicolumn formatting (FMi)
-\c@tracingmulticols=\count88
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2017/04/11 v1.8q multicolumn formatting (FMi)
+\c@tracingmulticols=\count87
 \mult@box=\box26
 \multicol@leftmargin=\dimen103
-\c@unbalance=\count89
-\c@collectmore=\count90
-\doublecol@number=\count91
-\multicoltolerance=\count92
-\multicolpretolerance=\count93
+\c@unbalance=\count88
+\c@collectmore=\count89
+\doublecol@number=\count90
+\multicoltolerance=\count91
+\multicolpretolerance=\count92
 \full@width=\dimen104
 \page@free=\dimen105
 \premulticols=\dimen106
@@ -60,55 +63,55 @@ Package: multicol 2018/04/20 v1.8s multicolumn formatting (FMi)
 \@tempa=\box47
 \@tempa=\box48
 \@tempa=\box49
-\c@columnbadness=\count94
-\c@finalcolumnbadness=\count95
+\c@columnbadness=\count93
+\c@finalcolumnbadness=\count94
 \last@try=\dimen109
 \multicolovershoot=\dimen110
 \multicolundershoot=\dimen111
 \mult@nat@firstbox=\box50
 \colbreak@box=\box51
-\mc@col@check@num=\count96
+\mc@col@check@num=\count95
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\setspace\setspace.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\jknappen\mathrsfs.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
 Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 \symrsfs=\mathgroup4
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg"
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def"
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen112
 \Gin@req@width=\dimen113
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\caption\subcaption.sty"
-Package: subcaption 2019/09/01 v1.3a Sub-captions (AR)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\caption\caption.sty"
-Package: caption 2019/10/18 v3.4a Customizing captions (AR)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\caption\caption3.sty"
-Package: caption3 2019/09/09 v1.8e caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 64.
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
 \captionmargin=\dimen114
 \captionmargin@=\dimen115
 \captionwidth=\dimen116
@@ -116,15 +119,13 @@ Package caption3 Info: TeX engine: e-TeX on input line 64.
 \caption@indent=\dimen118
 \caption@parindent=\dimen119
 \caption@hangindent=\dimen120
-Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count97
-\c@continuedfloat=\count98
+\c@ContinuedFloat=\count96
 )
-\c@subfigure=\count99
-\c@subtable=\count100
+\c@subfigure=\count97
+\c@subtable=\count98
 )
-(digital_communications_essentials.aux)
+(./digital_communications_essentials.aux)
 \openout1 = `digital_communications_essentials.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
@@ -140,44 +141,44 @@ LaTeX Font Info:    ... okay on input line 13.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
 LaTeX Font Info:    ... okay on input line 13.
 
-("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count101
+\scratchcounter=\count99
 \scratchdimen=\dimen121
 \scratchbox=\box52
-\nofMPsegments=\count102
-\nofMParguments=\count103
+\nofMPsegments=\count100
+\nofMParguments=\count101
 \everyMPshowfont=\toks15
-\MPscratchCnt=\count104
+\MPscratchCnt=\count102
 \MPscratchDim=\dimen122
-\MPnumerator=\count105
-\makeMPintoPDFobject=\count106
+\MPnumerator=\count103
+\makeMPintoPDFobject=\count104
 \everyMPtoPDFconversion=\toks16
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\kvdefinekeys.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
 Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 )))
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\kvsetkeys.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
 Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\etexcmds.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
 Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifluatex.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
 Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
@@ -186,12 +187,12 @@ Package etexcmds Info: Could not find \expanded.
 (etexcmds)             that some package has redefined \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 )))
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\pdftexcmds.sty"
-Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2018/01/21 v0.26 Utility functions of pdfTeX for LuaTeX (HO
 )
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
-Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
@@ -204,7 +205,11 @@ Package grfext Info: Graphics extension search list:
 (grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
-)
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -215,13 +220,13 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 14.
 LaTeX Font Info:    Try loading font information for U+rsfs on input line 14.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\jknappen\ursfs.fd"
+(/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 
 LaTeX Warning: No \author given.
 
-(digital_communications_essentials.toc
+(./digital_communications_essentials.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -232,21 +237,20 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
  [1
 
-{C:/Users/Greg/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] [3] [4] 
-[5] [6]
-<figs/amplitude_modulation/dsb/message_signal.png, id=34, 433.62pt x 289.08pt>
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] [6]
+<figs/amplitude_modulation/dsb/message_signal.png, id=35, 433.62pt x 289.08pt>
 File: figs/amplitude_modulation/dsb/message_signal.png Graphic file (type png)
 <use figs/amplitude_modulation/dsb/message_signal.png>
 Package pdftex.def Info: figs/amplitude_modulation/dsb/message_signal.png  used
  on input line 148.
 (pdftex.def)             Requested size: 103.50105pt x 68.99686pt.
-<figs/amplitude_modulation/dsb/carrier_signal.png, id=36, 433.62pt x 289.08pt>
+<figs/amplitude_modulation/dsb/carrier_signal.png, id=37, 433.62pt x 289.08pt>
 File: figs/amplitude_modulation/dsb/carrier_signal.png Graphic file (type png)
 <use figs/amplitude_modulation/dsb/carrier_signal.png>
 Package pdftex.def Info: figs/amplitude_modulation/dsb/carrier_signal.png  used
  on input line 155.
 (pdftex.def)             Requested size: 103.50105pt x 68.99686pt.
-<figs/amplitude_modulation/dsb/modulated_signal.png, id=37, 433.62pt x 289.08pt
+<figs/amplitude_modulation/dsb/modulated_signal.png, id=38, 433.62pt x 289.08pt
 >
 File: figs/amplitude_modulation/dsb/modulated_signal.png Graphic file (type png
 )
@@ -254,7 +258,7 @@ File: figs/amplitude_modulation/dsb/modulated_signal.png Graphic file (type png
 Package pdftex.def Info: figs/amplitude_modulation/dsb/modulated_signal.png  us
 ed on input line 162.
 (pdftex.def)             Requested size: 103.50105pt x 68.99686pt.
-<figs/amplitude_modulation/dsb/message_signal_freq.png, id=38, 433.62pt x 289.0
+<figs/amplitude_modulation/dsb/message_signal_freq.png, id=39, 433.62pt x 289.0
 8pt>
 File: figs/amplitude_modulation/dsb/message_signal_freq.png Graphic file (type 
 png)
@@ -262,7 +266,7 @@ png)
 Package pdftex.def Info: figs/amplitude_modulation/dsb/message_signal_freq.png 
  used on input line 167.
 (pdftex.def)             Requested size: 103.50105pt x 68.99686pt.
-<figs/amplitude_modulation/dsb/carrier_signal_freq.png, id=39, 433.62pt x 289.0
+<figs/amplitude_modulation/dsb/carrier_signal_freq.png, id=40, 433.62pt x 289.0
 8pt>
 File: figs/amplitude_modulation/dsb/carrier_signal_freq.png Graphic file (type 
 png)
@@ -270,7 +274,7 @@ png)
 Package pdftex.def Info: figs/amplitude_modulation/dsb/carrier_signal_freq.png 
  used on input line 174.
 (pdftex.def)             Requested size: 103.50105pt x 68.99686pt.
-<figs/amplitude_modulation/dsb/modulated_signal_freq.png, id=40, 433.62pt x 289
+<figs/amplitude_modulation/dsb/modulated_signal_freq.png, id=41, 433.62pt x 289
 .08pt>
 File: figs/amplitude_modulation/dsb/modulated_signal_freq.png Graphic file (typ
 e png)
@@ -282,19 +286,19 @@ g  used on input line 181.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<figs/amplitude_modulation/am/message_signal.png, id=41, 433.62pt x 289.08pt>
+<figs/amplitude_modulation/am/message_signal.png, id=42, 433.62pt x 289.08pt>
 File: figs/amplitude_modulation/am/message_signal.png Graphic file (type png)
 <use figs/amplitude_modulation/am/message_signal.png>
 Package pdftex.def Info: figs/amplitude_modulation/am/message_signal.png  used 
 on input line 197.
 (pdftex.def)             Requested size: 103.50105pt x 68.99686pt.
-<figs/amplitude_modulation/am/carrier_signal.png, id=42, 433.62pt x 289.08pt>
+<figs/amplitude_modulation/am/carrier_signal.png, id=43, 433.62pt x 289.08pt>
 File: figs/amplitude_modulation/am/carrier_signal.png Graphic file (type png)
 <use figs/amplitude_modulation/am/carrier_signal.png>
 Package pdftex.def Info: figs/amplitude_modulation/am/carrier_signal.png  used 
 on input line 204.
 (pdftex.def)             Requested size: 103.50105pt x 68.99686pt.
-<figs/amplitude_modulation/am/modulated_signal.png, id=43, 433.62pt x 289.08pt>
+<figs/amplitude_modulation/am/modulated_signal.png, id=44, 433.62pt x 289.08pt>
 
 File: figs/amplitude_modulation/am/modulated_signal.png Graphic file (type png)
 
@@ -302,7 +306,7 @@ File: figs/amplitude_modulation/am/modulated_signal.png Graphic file (type png)
 Package pdftex.def Info: figs/amplitude_modulation/am/modulated_signal.png  use
 d on input line 211.
 (pdftex.def)             Requested size: 103.50105pt x 68.99686pt.
-<figs/amplitude_modulation/am/message_signal_freq.png, id=44, 433.62pt x 289.08
+<figs/amplitude_modulation/am/message_signal_freq.png, id=45, 433.62pt x 289.08
 pt>
 File: figs/amplitude_modulation/am/message_signal_freq.png Graphic file (type p
 ng)
@@ -310,7 +314,7 @@ ng)
 Package pdftex.def Info: figs/amplitude_modulation/am/message_signal_freq.png  
 used on input line 216.
 (pdftex.def)             Requested size: 103.50105pt x 68.99686pt.
-<figs/amplitude_modulation/am/carrier_signal_freq.png, id=45, 433.62pt x 289.08
+<figs/amplitude_modulation/am/carrier_signal_freq.png, id=46, 433.62pt x 289.08
 pt>
 File: figs/amplitude_modulation/am/carrier_signal_freq.png Graphic file (type p
 ng)
@@ -318,7 +322,7 @@ ng)
 Package pdftex.def Info: figs/amplitude_modulation/am/carrier_signal_freq.png  
 used on input line 223.
 (pdftex.def)             Requested size: 103.50105pt x 68.99686pt.
-<figs/amplitude_modulation/am/modulated_signal_freq.png, id=46, 433.62pt x 289.
+<figs/amplitude_modulation/am/modulated_signal_freq.png, id=47, 433.62pt x 289.
 08pt>
 File: figs/amplitude_modulation/am/modulated_signal_freq.png Graphic file (type
  png)
@@ -329,19 +333,19 @@ Package pdftex.def Info: figs/amplitude_modulation/am/modulated_signal_freq.png
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<figs/amplitude_modulation/ssb/message_signal.png, id=47, 433.62pt x 289.08pt>
+<figs/amplitude_modulation/ssb/message_signal.png, id=48, 433.62pt x 289.08pt>
 File: figs/amplitude_modulation/ssb/message_signal.png Graphic file (type png)
 <use figs/amplitude_modulation/ssb/message_signal.png>
 Package pdftex.def Info: figs/amplitude_modulation/ssb/message_signal.png  used
  on input line 244.
 (pdftex.def)             Requested size: 103.50105pt x 68.99686pt.
-<figs/amplitude_modulation/ssb/carrier_signal.png, id=48, 433.62pt x 289.08pt>
+<figs/amplitude_modulation/ssb/carrier_signal.png, id=49, 433.62pt x 289.08pt>
 File: figs/amplitude_modulation/ssb/carrier_signal.png Graphic file (type png)
 <use figs/amplitude_modulation/ssb/carrier_signal.png>
 Package pdftex.def Info: figs/amplitude_modulation/ssb/carrier_signal.png  used
  on input line 251.
 (pdftex.def)             Requested size: 103.50105pt x 68.99686pt.
-<figs/amplitude_modulation/ssb/modulated_signal.png, id=49, 433.62pt x 289.08pt
+<figs/amplitude_modulation/ssb/modulated_signal.png, id=50, 433.62pt x 289.08pt
 >
 File: figs/amplitude_modulation/ssb/modulated_signal.png Graphic file (type png
 )
@@ -349,7 +353,7 @@ File: figs/amplitude_modulation/ssb/modulated_signal.png Graphic file (type png
 Package pdftex.def Info: figs/amplitude_modulation/ssb/modulated_signal.png  us
 ed on input line 258.
 (pdftex.def)             Requested size: 103.50105pt x 68.99686pt.
-<figs/amplitude_modulation/ssb/message_signal_freq.png, id=50, 433.62pt x 289.0
+<figs/amplitude_modulation/ssb/message_signal_freq.png, id=51, 433.62pt x 289.0
 8pt>
 File: figs/amplitude_modulation/ssb/message_signal_freq.png Graphic file (type 
 png)
@@ -357,7 +361,7 @@ png)
 Package pdftex.def Info: figs/amplitude_modulation/ssb/message_signal_freq.png 
  used on input line 263.
 (pdftex.def)             Requested size: 103.50105pt x 68.99686pt.
-<figs/amplitude_modulation/ssb/carrier_signal_freq.png, id=51, 433.62pt x 289.0
+<figs/amplitude_modulation/ssb/carrier_signal_freq.png, id=52, 433.62pt x 289.0
 8pt>
 File: figs/amplitude_modulation/ssb/carrier_signal_freq.png Graphic file (type 
 png)
@@ -365,7 +369,7 @@ png)
 Package pdftex.def Info: figs/amplitude_modulation/ssb/carrier_signal_freq.png 
  used on input line 270.
 (pdftex.def)             Requested size: 103.50105pt x 68.99686pt.
-<figs/amplitude_modulation/ssb/modulated_signal_freq.png, id=52, 433.62pt x 289
+<figs/amplitude_modulation/ssb/modulated_signal_freq.png, id=53, 433.62pt x 289
 .08pt>
 File: figs/amplitude_modulation/ssb/modulated_signal_freq.png Graphic file (typ
 e png)
@@ -384,43 +388,45 @@ litude_modulation/dsb/carrier_signal_freq.png> <./figs/amplitude_modulation/dsb
  <./figs/amplitude_modulation/am/carrier_signal.png> <./figs/amplitude_modulati
 on/am/modulated_signal.png> <./figs/amplitude_modulation/am/message_signal_freq
 .png> <./figs/amplitude_modulation/am/carrier_signal_freq.png> <./figs/amplitud
-e_modulation/am/modulated_signal_freq.png>]
-(digital_communications_essentials.bbl
+e_modulation/am/modulated_signal_freq.png>] [9 <./figs/amplitude_modulation/ssb
+/message_signal.png> <./figs/amplitude_modulation/ssb/carrier_signal.png> <./fi
+gs/amplitude_modulation/ssb/modulated_signal.png> <./figs/amplitude_modulation/
+ssb/message_signal_freq.png> <./figs/amplitude_modulation/ssb/carrier_signal_fr
+eq.png> <./figs/amplitude_modulation/ssb/modulated_signal_freq.png>] [10]
+(./digital_communications_essentials.bbl
 
 LaTeX Warning: Empty `thebibliography' environment on input line 10.
 
-) [9 <./figs/amplitude_modulation/ssb/message_signal.png> <./figs/amplitude_mod
-ulation/ssb/carrier_signal.png> <./figs/amplitude_modulation/ssb/modulated_sign
-al.png> <./figs/amplitude_modulation/ssb/message_signal_freq.png> <./figs/ampli
-tude_modulation/ssb/carrier_signal_freq.png> <./figs/amplitude_modulation/ssb/m
-odulated_signal_freq.png>] (digital_communications_essentials.aux) ) 
+) [11] (./digital_communications_essentials.aux) ) 
 Here is how much of TeX's memory you used:
- 2934 strings out of 492970
- 50651 string characters out of 3135858
- 116923 words of memory out of 3000000
- 6773 multiletter control sequences out of 15000+200000
- 9837 words of font info for 37 fonts, out of 3000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 42i,8n,40p,475b,467s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program
- Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
-onts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
-mr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Progr
-am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/rsfs/rsfs10.pfb>
-Output written on digital_communications_essentials.pdf (9 pages, 532454 bytes)
-.
+ 2913 strings out of 494923
+ 50342 string characters out of 6180741
+ 107348 words of memory out of 5000000
+ 6193 multiletter control sequences out of 15000+600000
+ 9837 words of font info for 37 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 42i,8n,40p,473b,459s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/rs
+fs/rsfs10.pfb>
+Output written on digital_communications_essentials.pdf (11 pages, 528339 bytes
+).
 PDF statistics:
- 133 PDF objects out of 1000 (max. 8388607)
+ 141 PDF objects out of 1000 (max. 8388607)
+ 75 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  91 words of extra memory for PDF output out of 10000 (max. 10000000)
 

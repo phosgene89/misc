@@ -74,10 +74,10 @@ The next logical step is to introduce multiple independent variables. Let $\mu_{
 \begin{equation} \frac{\partial F}{\partial y_{i}} +  \sum_{n=1}^{N} \sum_{\mu_{1} \leq ...\leq \mu_{n}} (-1)^{n}\frac{d^{n}}{d x_{\mu_{1}}...d x_{\mu_{n}}} \bigg(\frac{\partial F}{\partial y^{(1)_{\mu_{1}}}_{i} ...\partial y^{(1)_{\mu_{n}}}_{i}}\bigg) = 0 \label{eulerlagrange_higherderivatives_functions_variables} \end{equation}  
 Note that $\mu_{m}$ is an arbitrary reference to any $x_m$. Hence $x_{\mu_{1}}$ may be equal to $x_{\mu{2}}$ even though $x_{1} \neq x_{2}$. For $3$ independent variables $x_{1}$, $x_{2}$ and $x_{3}$, and $n=2$, we have that
 
-\begin{equation*} \sum_{\mu_{1} \leq ...\leq \mu_{2}}d x_{\mu_{1}}d x_{\mu_{2}} = d x_{\mu_{1}}^{2} + d x_{\mu_{1}}d x_{\mu_{2}} + d x_{\mu_{1}}d x_{\mu_{3}}+d x_{\mu_{2}}^{2} + d x_{\mu_{2}}d x_{\mu_{3}} + d x_{\mu_{3}}^{2}\end{equation*}
+\begin{equation*} \sum_{\mu_{1} \leq ...\leq \mu_{2}}d x_{\mu_{1}}d x_{\mu_{2}} = d x_{1}^{2} + d x_{1} d x_{2} + d x_{1} d x_{3} +d x_{2}^{2} + d x_{2}d x_{3} + d x_{3}^{2}\end{equation*}
 
-For the sample example, but with $n=1$, we have
-\begin{equation*} \sum_{\mu_{1} \leq ...\leq \mu_{1}}d x_{\mu_{1}}d x_{\mu_{1}} = d x_{\mu_{1}}^{2} + d x_{\mu_{2}}^{2} + d x_{\mu_{3}}^{2}\end{equation*}
+For the same example, but with $n=1$, we have
+\begin{equation*} \sum_{\mu_{1} \leq ...\leq \mu_{1}}d x_{\mu_{1}}d x_{\mu_{1}} = d x_{1}^{2} + d x_{2}^{2} + d x_{3}^{2}\end{equation*}
 \subsection{Constraints}
 We will frequently want to find the stationary point of $\delta J$ subject to certain constraints. 
 \subsubsection{Integral constraints}
@@ -108,6 +108,8 @@ where $G$ and $K$ are defined as in the previous section. We now define $F_{c}$ 
 where $\lambda (x)$ is a Lagrange multiplier. Take note that our Lagrange multiplier is now dependant on our independent variables. Given $F_{c}$, we proceed in the same manner as for integral constraints.
 \subsubsection{Non-holonomic constraints}
 Non-holonomic constraints are equivalence constraints that involve derivatives of functions. They are not covered.
+\subsection{The first integral}
+\subsection{Boundary conditions}
 \subsection{Examples}
 \subsubsection{Lagrangian mechanics}
 \subsection{Variable end points}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.11.2)  30 DEC 2019 23:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.11.2)  1 JAN 2020 21:54
 entering extended mode
 **./digital_communications_essentials.tex
 (digital_communications_essentials.tex
@@ -437,18 +437,18 @@ gs/amplitude_modulation/ssb/modulated_signal.png> <./figs/amplitude_modulation/
 ssb/message_signal_freq.png> <./figs/amplitude_modulation/ssb/carrier_signal_fr
 eq.png> <./figs/amplitude_modulation/ssb/modulated_signal_freq.png>] [10]
 [11]
-Overfull \hbox (6.22134pt too wide) in paragraph at lines 339--341
+Overfull \hbox (6.22134pt too wide) in paragraph at lines 342--344
 \OT1/cmr/m/n/10 where $\OML/cmm/m/it/10 $ \OT1/cmr/m/n/10 is a pos-i-tive con-
 stant, $\OML/cmm/m/it/10 m[]$ \OT1/cmr/m/n/10 is the max-i-mum sig-nal am-pli-t
 ude and $\OML/cmm/m/it/10 sgn\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 m\OT1/cmr/m/n/10
  ) =
  []
 
-(digital_communications_essentials.bbl
+[12] [13] [14] [15] [16] (digital_communications_essentials.bbl
 
 LaTeX Warning: Empty `thebibliography' environment on input line 10.
 
-) [12] (digital_communications_essentials.aux) ) 
+) [17] (digital_communications_essentials.aux) ) 
 Here is how much of TeX's memory you used:
  3544 strings out of 492970
  57591 string characters out of 3135858
@@ -456,7 +456,7 @@ Here is how much of TeX's memory you used:
  7365 multiletter control sequences out of 15000+200000
  10965 words of font info for 42 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,8n,40p,532b,471s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,11n,40p,532b,471s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fo
 nts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
 1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
@@ -473,10 +473,10 @@ m/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.p
 fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/rsfs/rsfs10.pfb>
-Output written on digital_communications_essentials.pdf (12 pages, 560543 bytes
+Output written on digital_communications_essentials.pdf (17 pages, 575165 bytes
 ).
 PDF statistics:
- 146 PDF objects out of 1000 (max. 8388607)
+ 162 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  91 words of extra memory for PDF output out of 10000 (max. 10000000)
 

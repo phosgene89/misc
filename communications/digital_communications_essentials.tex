@@ -324,15 +324,18 @@ The Deviation radio $D$ is defined as
 for a message signal bandwidth $\omega_{M}$. The bandwidth of the modulated signal is then given as
 \begin{equation} W_{B} \approx 2(D +1)\omega_{M} \end{equation}
 $W_{B}$ contains $98\%$ of signal power.
+
+\newpage
 \section{Digital Transmission of Analog Signals}
 \subsection{Pulse Code Modulation}
 Pulse code modulation (PCM) consists of three main steps: sampling, quantisation and encoding. The sampled signal must be \textit{bandwidth limited} - ie it must be composed of a finite number of frequencies.
 \subsubsection{Pulse Amplitude Modulation}
 Pulse amplitude modulation (PAM) utilises a periodic train of rectangular pulses as the carrier signal $x_{c}(t)$. The modulated signal $x_{PAM}(t)$ is then given by the discrete convolution of the message signal $m(t)$ and the carrier signal
 \begin{equation} x_{PAM}(t) = m(t)*x_{c}(t) = \sum_{n=-\infty}^{\infty} m(nT_{s})x_{c}(t-nT_{s}) \end{equation}
-where $T_{s}$ is the sampling frequency.
-\subsubsection{Quantising Error}
-Once the signal has been modulated, thereby quantising in time, its amplitude must also be quantised. There is an error associated with uniform quantisation that is referred to as quantising error or quantising noise. Given an amplitude step size of $\Delta_{A}$, the quantising error $q_{e}$ varies uniformly over $[-\frac{\Delta_{A}}{2}, \frac{\Delta_{A}}{2}]$. The expected value of $q_{e}^{2}$ is thus
+where $T_{s}$ is the sampling period.
+Once the signal has been modulated, thereby quantising in time, its amplitude must also be quantised. This can be done by slicing the amplitude into discrete, uniformly sized intervals and replacing all signal values within a given interval with the centre value fo the interval.
+\subsubsection{PAM Uniform Quantising Error}
+There is an error associated with uniform amplitude quantisation that is referred to as quantising error or quantising noise. Given an amplitude step size of $\Delta_{A}$, the quantising error $q_{e}$ varies uniformly over $[-\frac{\Delta_{A}}{2}, \frac{\Delta_{A}}{2}]$. The expected value of $q_{e}^{2}$ is thus
 \begin{equation} \langle q_{e}^{2} \rangle = \frac{1}{\Delta_{A}} \int_{-\Delta_{A}/2}^{\Delta_{A}/2} q_{e}^{2}dq_{e} = \frac{\Delta_{A}^{2}}{12} \end{equation}
 \subsubsection{Non-uniform Quantisation}
 Oftentimes signals are not evenly distributed over their range of values. In these situations, it is better to use non-uniform quantisation that allows for finer discretisation in ranges of amplitudes where signal values are more likely to be. A typical method of non-uniform quantisation is to first use a non-linear \textit{compression} of the original signal followed by a uniform quantisation of the compressed signal. A common compression used is the \textit{$\mu$ law}
@@ -345,13 +348,73 @@ Another common compression is the \textit{A law}, given by
 \frac{(1+ln(A)|m/m_{p}|)}{1+ln(A)}sgn(m), & \frac{1}{A}\leq |\frac{m}{m_{p}}|\leq 1.
 \end{cases} \end{equation}
 \subsubsection{Bandwidth Requirements}
-test
+Binary PCM with $L$ levels of quantisation satisfying $L=2^{n}$ require $n = log_{2}(L)$ binary pulses to be transmitted for each sample of the message signal. If the sampling rate is $f_{s}$ then $nf_{s}$ binary pulses must be transmitted per second. If the PCM signal is a low-pass signal of bandwidth $f_{PCM}$, then the required minimum sampling rate is $2f_{PCM}$. In other words
+\begin{equation} f_{PCM} \geq \frac{n}{2}f_{s} \end{equation}
+\subsubsection{Delta Modulation}
+Delta modulation (DM) performs analog to digital signal conversion using the $sgn$ function. Let $m(t)$ be the analog signal and $\tilde{m}(t)$ be the digital signal. The value of $\tilde{m}(t)$ for the next sampling period of length $T_{s}$ is given by $\Delta sgn[e(t)]$ for $e(t) = m(t) - \tilde{m}(t)$.
+\subsubsection{DM Quantising Error}
+The quantising error in delta modulation is inside the interval $(-\Delta, \Delta)$ and hence the expected value fo the mean squared quantising error is
+\begin{equation} \langle q_{e}^{2} \rangle =\frac{1}{2 \Delta} \int_{-\Delta}^{\Delta} q_{e}^{2} dq_{e} = \frac{\Delta^{2}}{3} \end{equation}
+\subsubsection{Adaptive Delta Modulation}
 
 
+\subsection{Signaling Formats}
+Binary symbols can be transmitted by several different pulse waveforms, given below.
+\subsubsection{Unipolar Nonreturn-to-Zero}
+Unipolar nonreturn-to-zero (NRZ) signalling represents $1$ using a pulse of constant, non-zero amplitude over an entire bit interval. No signal is transmitted over over a bit interval to communicate $0$.
+\subsubsection{Bipolar NRZ}
+For a given amplitude $A_{NRZ}$, $1$ is represented by a pulse of amplitude $A_{NRZ}$ and $0$ is represented by a pulse of amplitude $-A_{NRZ}$.
+\subsubsection{Unipolar Return-to-Zero}
+$1$ is represented by a positive amplitude pulse that decays to an amplitude of $0$ before the end of the bit interval. The absence of a pulse represents $0$.
+\subsubsection{Bipolar RZ}
+$1$ is represented by a positive amplitude pulse that decays to an amplitude of $0$ before the end of the bit interval. $0$ is represented by a negative amplitude pulse that increases to an amplitude of $0$ before the end of the bit interval.
+\subsubsection{Alternate Mark Inversion RZ}
+$1$ is represented by interchanging positive and negative pulses of equal amplitude, both returning to $0$ before the end fo the bit interval. $0$ is represented by no signal.
+\subsubsection{Split-Phase}
+Within a bit interval, $1$ is represented by a positive pulse followed by a negative pulse, both of the same absolute amplitude. $0$ is represented by a negative pulse followed by a positive pulse, again with the same absolute amplitude.
+\subsection{Time-Division Multiplexing}
+Time-division multiplexing (TDM) allows several signals to be transmitted over the same frequency by allocating them to particular intervals of time. The required minimum sampling rate is $2f_{TDM}$, for \begin{equation}f_{TDM} = \frac{1}{2}nf_{s}\end{equation}
+where $n$ is the number of signals and $f_{s}$ is the sampling frequency of the whole multiplexed signal.
+\subsection{Pulse Shaping and Intersymbol Interference}
+Intersymbol interference (ISI) occurs when transmitted pulses spread out and over adjacent time slots. Two ways to address this are pulse shaping and raised-cosine filtering.
+\subsubsection{Pulse Shaping}
+Pulse shaping uses pulses with the following shape
+\begin{equation} h(t) = \frac{1}{T_{s}}\frac{sin(\pi t/T_{s})}{\pi t/T_{s}} \end{equation}
+\subsubsection{Raised-Cosine Filtering}
+Raised-cosine filtering uses a frequency response as follows
+\begin{equation} H(\omega)=\begin{cases}
+1, & 0 \leq |\omega| \leq (1-\alpha)W \\
+\frac{1}{2}\bigg\{ 1- sin\big[ \frac{\pi}{2\alpha W}(|\omega|-W) \big] \bigg\}, & (1-\alpha)W \leq |\omega| \leq (1+\alpha)W \\
+0, & |\omega| > (1+\alpha)W
+\end{cases} \end{equation}
+where $W=\pi T_{s}$. The corresponding impulse response is
+\begin{equation} h(t) = \frac{1}{T_{s}} \bigg( \frac{sin(Wt)}{Wt}\frac{cos(\alpha Wt)}{1-(2 \alpha Wt/\pi)^{2}} \bigg) \end{equation}
+The bandwidth required for a pulse transmission rate of $\frac{1}{T}$ is 
+\begin{equation} f_{B} = \frac{1+\alpha}{2T} \end{equation}
+\subsection{Digital Carrier Modulation Systems}
+When transmitting low frequency binary symbols, we need to transmit them with high frequency waves. There are several ways to do this.
+\subsubsection{Amplitude-Shift Keying}
+Amplitude-shift keying (ASK) modulates the signal as follows
+\begin{equation} x_{c}(t)=\begin{cases}Acos(\omega_{c}t), & \text{symbol 1} \\
+0, & \text{symbol 0}
+\end{cases} \end{equation}
+\subsubsection{Frequency-Shift Keying}
+Frequency-shift keying (FSK) modulates the signal as follows
+\begin{equation} x_{c}(t)=\begin{cases}Acos(\omega_{1}t), & \text{symbol 1} \\
+Acos(\omega_{2}t), & \text{symbol 0}
+\end{cases} \end{equation}
+\subsubsection{Phase-Shift Keying}
+Phase-shift keying (PSK) modulates the signal as follows
+\begin{equation} x_{c}(t)=\begin{cases}Acos(\omega_{c}t), & \text{symbol 1} \\
+Acos(\omega_{c}t+\pi), & \text{symbol 0}
+\end{cases} \end{equation}
 
-
+\newpage
+\section{Random Signals and Noise}
+Test
 \bibliographystyle{amsplain}
 
+\newpage
 \bibliography{refs}
 %\end{multicols}
 \end{document}

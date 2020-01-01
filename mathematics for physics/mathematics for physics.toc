@@ -8,17 +8,11 @@
 \contentsline {subsubsection}{\numberline {1.6.1}Integral constraints}{4}
 \contentsline {subsubsection}{\numberline {1.6.2}Holonomic constraints}{5}
 \contentsline {subsubsection}{\numberline {1.6.3}Non-holonomic constraints}{5}
-<<<<<<< HEAD
 \contentsline {subsection}{\numberline {1.7}The first integral}{5}
-\contentsline {subsection}{\numberline {1.8}Boundary conditions}{5}
-\contentsline {subsection}{\numberline {1.9}Examples}{5}
-\contentsline {subsubsection}{\numberline {1.9.1}Lagrangian mechanics}{5}
-\contentsline {subsection}{\numberline {1.10}Variable end points}{5}
-=======
-\contentsline {subsection}{\numberline {1.7}Examples}{6}
-\contentsline {subsubsection}{\numberline {1.7.1}Lagrangian mechanics}{6}
-\contentsline {subsection}{\numberline {1.8}Variable end points}{6}
->>>>>>> cd8f7728af76b5d606a0f69c7a9dbc8ca7580c5c
+\contentsline {subsection}{\numberline {1.8}Boundary conditions}{6}
+\contentsline {subsection}{\numberline {1.9}Examples}{6}
+\contentsline {subsubsection}{\numberline {1.9.1}Lagrangian mechanics}{6}
+\contentsline {subsection}{\numberline {1.10}Variable end points}{6}
 \contentsline {section}{\numberline {2}Function spaces}{6}
 \contentsline {section}{\numberline {3}Linear ordinary differential equations}{6}
 \contentsline {section}{\numberline {4}Linear differential operators}{6}

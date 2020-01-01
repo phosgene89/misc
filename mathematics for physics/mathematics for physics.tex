@@ -109,9 +109,22 @@ where $\lambda (x)$ is a Lagrange multiplier. Take note that our Lagrange multip
 \subsubsection{Non-holonomic constraints}
 Non-holonomic constraints are equivalence constraints that involve derivatives of functions. They are not covered.
 \subsection{The first integral}
+The quantity $I = F - y^{(1)}\frac{\partial f}{\partial y^{(1)}}$ is called the \textit{first integral}. Suppose $F$ is directly dependent only on $y$ and $y^{(1)}$. We then have the following
+\begin{equation} \begin{split} \frac{d}{dx}\bigg(F - y^{(1)} \frac{\partial F}{\partial y^{(1)}} \bigg) & = y^{(1)}\frac{\partial F}{\partial y} + y^{(2)} \frac{\partial F}{\partial y^{(1)}} - y^{(2)}\frac{\partial F}{\partial y^{(1)}} - y^{(1)}\frac{d}{dx}\bigg( \frac{\partial F}{\partial y^{(1)}} \bigg) \\
+& = y^{(1)} \bigg( \frac{\partial f}{\partial y} - \frac{d}{dx} \bigg( \frac{\partial f}{\partial y^{(1)}} \bigg) \bigg)
+\end{split} \end{equation}
+The bracketed expression on the second line is the Euler-Lagrange equation and hence is set to $0$. We therefore have the result that the first integral $I$ is equal $0$ when $F$ has no direct dependence on $x$.
+
+For multiple functions $y_{i}$ the first integral becomes
+\begin{equation} I = F - \sum_{i} y_{i}^{(1)} \frac{\partial F}{\partial  y_{i}^{(1)}} \end{equation}
 \subsection{Boundary conditions}
 \subsection{Examples}
 \subsubsection{Lagrangian mechanics}
+Lagrangian mechanics is a formulation of classical mechanics that uses functionals composed of the difference between kinetic and potential energy, as opposed to the traditional approach based on Newton's laws. The Lagrangian $\mathcal{L}$ is given as follows
+\begin{equation} \mathcal{L} = T - V \end{equation}
+where $T$ is the kinetic energy and $V$ is the potential energy. 
+
+We are free to write $T$ and $V$ in terms of whatever variables we would like. Typically the independent variable is time and functions dependent on time are denoted by $q_{i}$.
 \subsection{Variable end points}
 test
 \nocite{*}

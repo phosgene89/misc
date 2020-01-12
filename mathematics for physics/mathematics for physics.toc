@@ -9,11 +9,12 @@
 \contentsline {subsubsection}{\numberline {1.6.2}Holonomic constraints}{5}
 \contentsline {subsubsection}{\numberline {1.6.3}Non-holonomic constraints}{5}
 \contentsline {subsection}{\numberline {1.7}The first integral}{5}
-\contentsline {subsection}{\numberline {1.8}Boundary conditions}{6}
+\contentsline {subsection}{\numberline {1.8}Free boundary value problems}{6}
 \contentsline {subsection}{\numberline {1.9}Examples}{6}
-\contentsline {subsubsection}{\numberline {1.9.1}Lagrangian mechanics}{6}
-\contentsline {subsection}{\numberline {1.10}Variable end points}{6}
-\contentsline {section}{\numberline {2}Function spaces}{6}
-\contentsline {section}{\numberline {3}Linear ordinary differential equations}{6}
-\contentsline {section}{\numberline {4}Linear differential operators}{6}
-\contentsline {section}{\numberline {5}Green functions}{6}
+\contentsline {subsubsection}{\numberline {1.9.1}Example 1: Brachistochrone}{6}
+\contentsline {subsubsection}{\numberline {1.9.2}Interlude: Lagrangian mechanics}{7}
+\contentsline {subsubsection}{\numberline {1.9.3}Example 2: Constrained optimisation}{7}
+\contentsline {section}{\numberline {2}Function spaces}{8}
+\contentsline {section}{\numberline {3}Linear ordinary differential equations}{8}
+\contentsline {section}{\numberline {4}Linear differential operators}{8}
+\contentsline {section}{\numberline {5}Green functions}{8}

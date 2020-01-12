@@ -432,10 +432,101 @@ Acos(\omega_{c}t+\pi), & \text{symbol 0}
 	\end{subfigure}
 	\caption{Modulating a message signal onto a carrier signal with AM modulation. Plots (a), (b) and (c) display signals in the time domain, whereas (d), (e) and (c) display the signals in the frequency domain.}\label{fig:am_modulation}
 \end{figure}
-
 \newpage
-\section{Random Signals and Noise}
-Test
+  $\small.$
+\newpage
+\section{Stochastic Processes}
+\subsection{Overview of Stochastic Processes}
+A stochastic process $\{ X_{t} \}$ is a collection of random variables $X_{t}$. A \textit{sample function} represents a single possible realisation of the stochastic process, ie each random variable $X_{t}$ takes on a single value. 
+
+
+For example, suppose that we have a stochastic process $X_{t}$, with $X_{t} = \mathcal{N}(0,1)$. This is the Wiener process. Two possible sample functions of $X_{t}$ are given in figure $\ref{fig:wiener_process}$.
+
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}[b]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{figs/random_processes/wiener_process_1.png}
+		\caption{First sample function.}
+		\label{fig:wiener_process_1}
+	\end{subfigure}
+	~
+	\begin{subfigure}[b]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{figs/random_processes/wiener_process_2.png}
+		\caption{Second sample function.}
+		\label{fig:wiener_process_2}
+	\end{subfigure}
+	~
+	\caption{Two realisations of sample functions of a Wiener process.}\label{fig:wiener_process}
+\end{figure}
+
+\subsection{Autocorrelation, Autocovariance and Joint Density Functions}
+The first order density $f_{X}(x, \tau)$ of a stochastic process $\{ X_{t} \}$ is given by
+
+\begin{equation} f_{X}(x, \tau) = p(X_{t} = x|t=\tau) \end{equation}
+
+Suppose we have $n$ random variables $X_{t}$, then the $n^{th}$ order density functions is defined as follows
+
+\begin{equation} f_{X}(x_{1},...x_{n}, \tau_{1},...\tau_{n}) = p(X_{t_{1}} = x_{1},..., X_{t_{n}} = x_{n}|t_{1}=\tau_{1},..., t_{n}=\tau_{n}) \end{equation}
+
+The autocorrelation of $X_{t}$ is given by
+
+\begin{equation} R_{XX}(t, t-\tau) = E[X_{t}X_{t-\tau}] \end{equation}
+for some given number of time lags $\tau$.
+
+The autocovariance is given by
+
+\begin{equation} C_{XX}(t, t-1) = E[(X_{t}-\mu_{X}(t))(X_{t-1}-\mu_{X}(t-1))] \end{equation}
+
+\subsection{Stationary Processes}
+A stochastic process $\{ X_{t} \}$ is \textit{stationary in the strict sense} (SSS) if its statistical properties are invariant with respect to time. In other words
+
+\begin{equation} f_{X}(x_{1},...x_{n}, \tau_{1},...\tau_{n}) = f_{X}(x_{1},...x_{n}, \tau_{1}-c,...\tau_{n}-c) \end{equation}
+for all $n$ and where $c$ is some shift in time.
+\newline
+\newline
+\noindent
+A stochastic process $\{ X_{t} \}$ is \textit{stationary in the wide sense} (WSS - side sense stationary) if the expected value of its density function is invariant with respect to time and if the autocorrelation function of the process depends only on $\tau$. This means that for any given $\tau$, the autocorrelation function is invariant with respect to time.
+\newline
+\newline
+\noindent
+Two processes $\{ X_{t} \}$ and $\{ Y_{t} \}$ are joint-sense stationary if both $\{ X_{t} \}$ and $\{ Y_{t} \}$ are WSS and their cross-correlation depends only on the time difference $\tau$
+
+\begin{equation} R_{XY}(t, t+\tau) = E[X_{t}Y_{t+\tau}] = R_{XY}(\tau) \end{equation}
+In other words, given $\tau$, the cross correlation between $\{ X_{t} \}$ and $\{ Y_{t} \}$ is time-invariant.
+
+\subsection{Ergodicity}
+The time averaged mean of a sample function $x(t)$ of a random process $\{ X_{t} \}$ is defined as
+
+\begin{equation} \langle x(t) \rangle =  \lim_{T\to\infty} \frac{1}{T} \int_{-T/2}^{T/2} x(t)dt \end{equation}
+The time averaged autocorrelation of $x(t)$ is defined as
+
+\begin{equation} \langle x(t)x(t+\tau) \rangle = \lim_{T\to\infty} \int_{-T/2}^{T/2} x(t)x(t+\tau)dt\end{equation}
+If $\{ X_{t} \}$ is stationary, then the expected value of the time-averaged mean is equal to the ensemble mean
+\begin{equation} \begin{split} E[\langle x(t) \rangle] & =  \lim_{T\to\infty} \frac{1}{T} \int_{-T/2}^{T/2} E[x(t)]dt \\
+& = \mu_{X} \\
+& = E[X_{t}]
+\end{split} \end{equation}
+The expected value of the time-averaged autocorrelation will also be equal to the ensemble autocorrelation
+
+\begin{equation} \begin{split}
+E[\langle x(t)x(t+\tau) \rangle] & = \lim_{T\to\infty} \int_{-T/2}^{T/2} E[x(t)x(t+\tau)]dt\\
+& = \lim_{T\to\infty} \int_{-T/2}^{T/2} R_{XX}(\tau)dt \\
+& = R_{XX}(\tau)
+\end{split}
+\end{equation}
+A stochastic process $ \{ X_{t} \}$ is said to be \textit{ergodic in the mean} if 
+\begin{equation}\langle x(t) \rangle = E[X(t)] \end{equation}
+which implies
+\begin{equation} \lim_{T\to\infty} \frac{1}{T} \int_{-T/2}^{T/2} x(t)dt = \int_{\Omega} xf(x)dx \end{equation}
+where $\Omega$ is the sample space of $X_{t}$ and $f(x) = \int_{\Theta}f(x, t)dt$ where $\Theta$ is the set of all $t$.
+\newline
+\newline
+\noindent
+A stochastic process $ \{ X_{t} \}$ is \textit{ergodic in the autocorrelation} if
+\begin{equation}\langle x(t)x(t+\tau) \rangle = E[X(t)X(t+\tau)] \end{equation}
+
+\subsection{Transmission of Stochastic Processes Through Linear Systems}
+
 \bibliographystyle{amsplain}
 
 \newpage

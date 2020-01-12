@@ -23,7 +23,7 @@ where $y^{(n)}$ denotes the $n^{th}$ derivative of $y$ with respect to $x$.
 
 For $J=\int Fdx$, where $f$ depends only on $x$, $y$ and $y'$, we show how to derive the Euler-Lagrange equation and find the $y$ that optimises $J$. 
 
-Let $\epsilon$ be a small, arbitrary real number, $\eta$ an arbitrary function of x and $y$ an arbitrary function of $x$ in $C^{\infty}$. A small perturbation in $y$ is given by $y = y^{*} + \epsilon \eta$, where $y^{*}$ is the unperturbed $y$. Also let $\delta J = J[y^{*} + \epsilon \eta] - J[y^{*}] $ and $\delta  F = \{ F(x, y, y^{(1)})-F(x,y^{*},y^{*(1)}) \}$, where $\delta$ is the variation operator. The change in $J$ associated with going from $y$ to $y^{*} + \epsilon \eta$ is given by
+Let $\epsilon$ be a small, arbitrary real number, $\eta$ an arbitrary function of x and $y$ an arbitrary function of $x$ in $C^{\infty}$. A small perturbation in $y$ is given by $y = y^{*} + \epsilon \eta$, where $y^{*}$ is the unperturbed $y$. We require that $y^{*}(x_{1}) = y(x_{1})$ and $y^{*}(x_{2}) = y(x_{2})$, ie $\eta (x_{1}) = \eta(x_{2}) = 0$. Let $\delta J = J[y^{*} + \epsilon \eta] - J[y^{*}] $ and $\delta  F = \{ F(x, y, y^{(1)})-F(x,y^{*},y^{*(1)}) \}$, where $\delta$ is the variation operator. The change in $J$ associated with going from $y$ to $y^{*} + \epsilon \eta$ is given by
 \begin{equation} \delta J = \int_{x_{1}}^{x_{2}} \delta  F dx \label{variational_functional_example}\end{equation}
 
 A necessary condition for the minimisation of $J$ is $\delta J= 0$. We then use a Taylor expansion of $\delta F$ around $\epsilon = 0$, discarding all terms second order and above.
@@ -117,16 +117,66 @@ The bracketed expression on the second line is the Euler-Lagrange equation and h
 
 For multiple functions $y_{i}$ the first integral becomes
 \begin{equation} I = F - \sum_{i} y_{i}^{(1)} \frac{\partial F}{\partial  y_{i}^{(1)}} \end{equation}
-\subsection{Boundary conditions}
+\subsection{Free boundary value problems}
+When an end-point is free to vary, eg $x_{2}$ is not specified, then we must also determine $x_{2}$ as part of the optimisation solution.
+
+The general procedure is to proceed as if $x_{2}$ is fixed and find the extremal $y$. $x_{2}$ can then be determined by solving
+
+\begin{equation} \mathcal{L}(x_{2}, y(x_{2}), y'(x_{2}),...) = 0\end{equation}
+
+for $x_{2}$. This is referred to as the\textit{ natural boundary condition} for $x_{2}$. A corresponding condition applies to determine $x_{1}$, should it also not be predetermined.
+
 \subsection{Examples}
-\subsubsection{Lagrangian mechanics}
+
+\subsubsection{Example 1: Brachistochrone}
+Suppose a bead is sliding down a wire from a height of $y_{0}$ to $y_{1}$ along a length of wire with start and end $x$ coordinates being $x_{0}$ and $x_{1}$. We want to know the shape of the wire that results in the particle moving from $x_{0}$ to $x_{1}$ as quickly as possible under the force of gravity alone.
+
+The time taken by the bead to slide down the wire is given by the distance travelled divided by the velocity of the bead. Using the fact that $T + V = constant$ and choosing a reference point of $V$ such that the $constant = 0$ allows us to derive an expression for the velocity, $v = \sqrt{2gy}$. The distance travelled is simply the integral of $ds$, hence our functional is
+
+\begin{equation} \begin{split} t_{total} & =  \int_{y_{0}} ^{y_{1}} \frac{ds}{\sqrt{2gy}} \\
+& = \int_{y_{0}} ^{y_{1}} \sqrt{\frac{1+y'^{2}}{2gy}}dt \end{split} \end{equation}
+
+We thus have 
+
+\begin{equation} F(y,y') = \sqrt{\frac{1+y'^{2}}{2gy}} \end{equation}
+
+Using the Euler-Lagrange equation and solving the resulting differential equation yields a solution of
+
+\begin{equation} \begin{split} x & = at - asin(t)\\
+y & = a-acos(t) \end{split} \end{equation}
+
+where $a$ is some constant chosen to satisfy the boundary conditions below
+
+\begin{equation} \begin{split} (x_{0}, y_{0}) & = (at - asin(0), a-acos(0)) \\
+(x_{1}, y_{1}) & = (at - asin(t_{total}), a-acos(t_{total})) \end{split} \end{equation}
+
+\subsubsection{Interlude: Lagrangian mechanics}
 Lagrangian mechanics is a formulation of classical mechanics that uses functionals composed of the difference between kinetic and potential energy, as opposed to the traditional approach based on Newton's laws. The Lagrangian $\mathcal{L}$ is given as follows
 \begin{equation} \mathcal{L} = T - V \end{equation}
 where $T$ is the kinetic energy and $V$ is the potential energy. 
 
 We are free to write $T$ and $V$ in terms of whatever variables we would like. Typically the independent variable is time and functions dependent on time are denoted by $q_{i}$.
-\subsection{Variable end points}
-test
+
+The Principle of Least Action states that the time evolution of a physical system between time $t_{0}$ and $t_{1}$ minimises the \textit{action} of the system. The action $\mathcal{S}$ is defined as 
+
+\begin{equation} \mathcal{S} = \int_{t_{0}}^{t_{1}} \mathcal{L} dt \end{equation}
+
+By minimising the action using the calculus of variations we can therefore find the equations describing the time evolution of a system.
+
+\subsubsection{Example 2: Constrained optimisation}
+Suppose a chain is fixed to two walls and we would like to determine the shape in which it will hang. We can do this by minimising the potential energy using a functional. The potential energy at each point in the chain is given by $PE = \mu gy(x) ds$, where $\mu$ is the density of the chain per unit length, $g$ is the force of gravity and $y(x)$ is the height. Integrating over the length of the chain gives us the total potential energy $V$, and is a functional that we can minimise with respect to $y$.
+
+\begin{equation} V = g \mu \int_{a}^{b} y\sqrt{1-y'^{2}}dx \end{equation}
+
+We then have
+
+\begin{equation} F(y, y') = y\sqrt{1-y'^{2}}\end{equation}
+
+The associated Euler-Lagrange equation is as follows
+
+\begin{equation} \frac{\partial F}{\partial y} - \frac{d}{dx}\frac{\partial F}{\partial y'} = \sqrt{1-y'^{2}} -  \end{equation}
+
+
 \nocite{*}
 \bibliography{refs}
 \bibliographystyle{amsplain}

@@ -14,7 +14,8 @@
 \contentsline {subsubsection}{\numberline {1.9.1}Example 1: Brachistochrone}{6}
 \contentsline {subsubsection}{\numberline {1.9.2}Interlude: Lagrangian mechanics}{7}
 \contentsline {subsubsection}{\numberline {1.9.3}Example 2: Constrained optimisation}{7}
-\contentsline {section}{\numberline {2}Function spaces}{8}
-\contentsline {section}{\numberline {3}Linear ordinary differential equations}{8}
-\contentsline {section}{\numberline {4}Linear differential operators}{8}
-\contentsline {section}{\numberline {5}Green functions}{8}
+\contentsline {section}{\numberline {2}Function spaces}{9}
+\contentsline {subsection}{\numberline {2.1}Function spaces}{9}
+\contentsline {section}{\numberline {3}Linear ordinary differential equations}{10}
+\contentsline {section}{\numberline {4}Linear differential operators}{11}
+\contentsline {section}{\numberline {5}Green functions}{12}

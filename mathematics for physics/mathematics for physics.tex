@@ -49,7 +49,7 @@ Supposing that $\eta$ and $\epsilon$ are not identically zero, we conclude that
 
 \begin{equation} \frac{\partial F}{\partial y} - \frac{d}{dx}\frac{\partial F}{\partial y^{(1)}} = 0 \label{euler_lagrange_eq1} \end{equation}
 
-($\ref{euler_lagrange_eq1}$) is known as an \textit{Euler-Lagrange equation}. The expression on the left hand side is referred to as the functional derivative of $\delta J$ with respect to $y$.
+($\ref{euler_lagrange_eq1}$) is known as an \textit{Euler-Lagrange equation}. The expression on the left hand side is the \textit{functional derivative} of $J$ with respect to $y$, $\frac{\delta J}{\delta y}$.
 
 \subsection{Functionals of higher order derivatives}
 If $F$ is a function of higher order derivatives of $y$, e.g. $y^{(5)}$ or $y^{(26)}$, then the Euler-Lagrange equation is extended as follows. Suppose $F$ is a function of the $N^{th}$ order derivative of $y$. The Euler-Lagrange equation is
@@ -181,13 +181,33 @@ The associated Euler-Lagrange equation is as follows
 \bibliography{refs}
 \bibliographystyle{amsplain}
 
-
+\newpage
 \section{Function spaces}
 
+\subsection{Function spaces}
+The norm $||f||$ of some function $f$ is a real number satisfying the following conditions:
+\newline
+\newline
+1. $||f|| \geq 0||$, with $||f|| = 0$ iff $f=0$, \newline
+2. $||f+g|| \leq ||f|| + ||g||$,\newline
+3. $||\lambda f|| = |\lambda|||f||$ for constant $\lambda$.
+
+The space $L^{p}[a,b]$ is defined to be a function space over the interval $[a,b]$, function set $F[a,b]$, for $1 \leq p < \infty$ and a norm of
+\begin{equation} ||f||_{p} = \bigg( \int_{a}^{b} |f(x)|^{p}dx  \bigg)^{1/p} \end{equation}
+$||f||_{p}$ must be finite for $\forall f \in F$.
+
+The elements of $L^{p}[a,b]$ are equivalence classes of functions, with functions in the same equivalence class differing by a function of norm $0$. Note that a function can have a norm of zero despite not being identically 0 if it is only non-zero at a finite number of points. This violates the first condition for being a norm, but forget that for now.
+
+
+\newpage
 \section{Linear ordinary differential equations}
 
+
+\newpage
 \section{Linear differential operators}
 
+
+\newpage
 \section{Green functions}
 
 \end{document}

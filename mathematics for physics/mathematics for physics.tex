@@ -1,6 +1,7 @@
 \documentclass[]{article}
 \usepackage[parfill]{parskip}
 \usepackage{amsmath}
+\usepackage{amsfonts}
 
 %opening
 \title{Notes for Mathematics for Physics: A Guided Tour for Graduate Students}
@@ -183,21 +184,75 @@ The associated Euler-Lagrange equation is as follows
 
 \newpage
 \section{Function spaces}
+\subsection{Vector spaces}
+A vector space consists of a set $V$ (whose elements are referred to as vectors), a field $\mathbb{F}$ (whose elements are called scalars) and two operators:
+\begin{enumerate}
+	\item A vector addition operation $+$ such that for $\textbf{u},\textbf{v} \in V$, $\textbf{u} + \textbf{v} \in V$.
+	\item A scalar multiplication operation such that for $\lambda \in \mathbb{F}$ and $\textbf{u} \in V$, $\lambda \textbf{u} \in V$.
+\end{enumerate}
+which satisfy the following conditions
+\begin{enumerate}
+	\item For $\forall \textbf{u},\textbf{v},\textbf{w} \in V$, 
+	\begin{equation} (\textbf{u} + \textbf{v}) + \textbf{w} = \textbf{u} + (\textbf{v} + \textbf{w}) \end{equation}
+	\item There exists some $\textbf{0} \in V$ such that for $\forall \textbf{v} \in V$, \begin{equation}\textbf{v} + \textbf{0} = \textbf{v}\end{equation}
+	\item For $\forall \textbf{v} \in V$, there exists some $-\textbf{v} \in V$ such that \begin{equation}\textbf{v}+-\textbf{v} = \textbf{v}-\textbf{v}=\textbf{0}\end{equation}
+	\item For $a,b \in \mathbb{F}$ and $\textbf{v} \in V$, $(ab)\mathbf{v} = a(b\mathbf{v})$.
+	\item For $\forall \textbf{v} \in V$, $1\textbf{v} = \textbf{v}$.
+	\item For $a,b \in \mathbb{F}$ and $\textbf{u}, \textbf{v} \in V$, \begin{equation} (a + b)\textbf{u} = a\textbf{u} + b\textbf{u} \end{equation}
+	and
+	\begin{equation} a(\textbf{u} + \textbf{v}) = a\textbf{u} + a\textbf{v}
+	\end{equation}
+\end{enumerate}
+\subsection{Functions as vectors}
+Taking functions to be infinite-dimensional vectors, we can take the vectors in a vector space to be functions. We use this to build up Hilbert spaces. An example of a vector space of functions is $C^{n}[a,b]$ - the set of all functions in $[a,b]$ with continuous $n^{th}$ order derivatives.
+\subsection{Inner products}
+An inner product associates two vectors $\textbf{u}, \textbf{v} \in V$ with a real number and is denoted by $\langle \textbf{u}, \textbf{v} \rangle$. It obeys three axioms:
+\begin{enumerate}
+	\item Bilinearity \begin{equation} \langle c\textbf{u}+d\textbf{v}, \textbf{w} \rangle = c\langle \textbf{u}, \textbf{w}  \rangle + d\langle \textbf{v} , \textbf{w} \rangle \end{equation}
+	\begin{equation} \langle \textbf{u},c\textbf{v}+ d\textbf{w} \rangle = c\langle \textbf{u}, \textbf{v}  \rangle + d\langle \textbf{u} , \textbf{w} \rangle \end{equation}
+	\item Symmetry \begin{equation} \langle \textbf{u},\textbf{v} \rangle = \langle \textbf{v},\textbf{u} \rangle \end{equation}
+	\item Non-negative \begin{equation} \langle \textbf{u},\textbf{v} \rangle \geq 0 \end{equation}
+	with $\langle \textbf{v},\textbf{v} \rangle = 0$ iff $\textbf{v} = \textbf{0}$.
+\end{enumerate}
 
-\subsection{Function spaces}
-The norm $||f||$ of some function $f$ is a real number satisfying the following conditions:
+\subsection{Norms}
+The norm of a vector space provides a measure of the 'size' of its elements. The norm $||f||$ of some function $f$  is a real number satisfying the following conditions:
 \newline
 \newline
 1. $||f|| \geq 0||$, with $||f|| = 0$ iff $f=0$, \newline
 2. $||f+g|| \leq ||f|| + ||g||$,\newline
 3. $||\lambda f|| = |\lambda|||f||$ for constant $\lambda$.
-
+\newline
+\newline
+We can obtain a norm from an inner product by taking the $p^{th}$ root of the inner product of some $\textbf{v}$ with itself: $\langle \textbf{v},\textbf{v} \rangle^{1/p}$.
+\newline
+\newline
 The space $L^{p}[a,b]$ is defined to be a function space over the interval $[a,b]$, function set $F[a,b]$, for $1 \leq p < \infty$ and a norm of
 \begin{equation} ||f||_{p} = \bigg( \int_{a}^{b} |f(x)|^{p}dx  \bigg)^{1/p} \end{equation}
 $||f||_{p}$ must be finite for $\forall f \in F$.
 
 The elements of $L^{p}[a,b]$ are equivalence classes of functions, with functions in the same equivalence class differing by a function of norm $0$. Note that a function can have a norm of zero despite not being identically 0 if it is only non-zero at a finite number of points. This violates the first condition for being a norm, but forget that for now.
 
+\subsection{Convergence of functions}
+Sequence of functions $f_{n}$ may converge to $f$ \textit{pointwise}, \textit{uniformly} or \textit{in the mean}.
+\subsubsection{Pointwise convergence}
+For all $x$ and all $\epsilon > 0$, there exists some $N$ such that, if $n \geq N$, then $|f_{n} - f| < \epsilon$. 
+\subsubsection{Uniform convergence}
+For all $\epsilon > 0$ there exists some $N$ such that, for all $x$ and $n > N$, $sup|f_{n}(x) - f(x)| < \epsilon$.
+\subsubsection{Convergence in the mean}
+For all $\epsilon > 0$ there exists some $N$ such that $\int |f_{n}(x) - f(x)|dx < \epsilon$ for $n > N$.
+
+\subsection{Banach spaces}
+A normed vector space is \textit{complete} if every Cauchy sequence in it converges to an element contained in the normed vector space. A complete normed vector space is called a \textit{Banach space}. $L^{p}[a,b]$ spaces are complete if the integrals in the $L^{p}$ norm are taken to be Lebesgue integrals.
+
+\subsection{Hilbert spaces}
+A Banach space whose norm is derived from an inner product is called a \textit{Hilbert space}. e.g. if we define the inner product as
+\begin{equation} \langle f, g \rangle = \int_{a}^{b} f^{*}g dx \end{equation}
+then the $L^{2}[a,b]$ norm can be written as 
+\begin{equation} ||f||_{2} = \sqrt{\langle f,f \rangle} \end{equation}
+$\langle f, g \rangle$ is a continuous functional of $f$ and $g$.
+A set of functions $\{ u_{n} \}$ is orthonormal if $\langle u_{n}, u_{m}\rangle = \delta_{nm}$. An orthonormal set of functions $\{ u_{n} \}$ within some Hilbert space is \textit{complete} if any element $f$ inside the Hilbert space can be written as 
+\begin{equation} f(x) = \sum_{n=0}^{\infty} a_{n}u_{n}(x) \end{equation}
 
 \newpage
 \section{Linear ordinary differential equations}

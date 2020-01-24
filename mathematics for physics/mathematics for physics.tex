@@ -177,6 +177,7 @@ The associated Euler-Lagrange equation is as follows
 
 \begin{equation} \frac{\partial F}{\partial y} - \frac{d}{dx}\frac{\partial F}{\partial y'} = \sqrt{1-y'^{2}} -  \end{equation}
 
+$\textbf{THE ABOVE IS UNFINISHED}$
 
 \nocite{*}
 \bibliography{refs}
@@ -204,7 +205,7 @@ which satisfy the following conditions
 	\end{equation}
 \end{enumerate}
 \subsection{Functions as vectors}
-Taking functions to be infinite-dimensional vectors, we can take the vectors in a vector space to be functions. We use this to build up Hilbert spaces. An example of a vector space of functions is $C^{n}[a,b]$ - the set of all functions in $[a,b]$ with continuous $n^{th}$ order derivatives.
+Taking functions to be infinite-dimensional vectors, we can take the vectors in a vector space to be functions. We refer to vector spaces of functions as function spaces. We use this to build up Hilbert spaces. An example of a vector space of functions is $C^{n}[a,b]$ - the set of all functions in $[a,b]$ with continuous $n^{th}$ order derivatives.
 \subsection{Inner products}
 An inner product associates two vectors $\textbf{u}, \textbf{v} \in V$ with a real number and is denoted by $\langle \textbf{u}, \textbf{v} \rangle$. It obeys three axioms:
 \begin{enumerate}
@@ -216,7 +217,7 @@ An inner product associates two vectors $\textbf{u}, \textbf{v} \in V$ with a re
 \end{enumerate}
 
 \subsection{Norms}
-The norm of a vector space provides a measure of the 'size' of its elements. The norm $||f||$ of some function $f$  is a real number satisfying the following conditions:
+The norm of a function space provides a measure of the 'size' of its elements. The norm of some function space $V$ is a function $||.||: V \longrightarrow \mathbb{F}$ satisfying the following conditions:
 \newline
 \newline
 1. $||f|| \geq 0||$, with $||f|| = 0$ iff $f=0$, \newline
@@ -243,17 +244,66 @@ For all $\epsilon > 0$ there exists some $N$ such that, for all $x$ and $n > N$,
 For all $\epsilon > 0$ there exists some $N$ such that $\int |f_{n}(x) - f(x)|dx < \epsilon$ for $n > N$.
 
 \subsection{Banach spaces}
-A normed vector space is \textit{complete} if every Cauchy sequence in it converges to an element contained in the normed vector space. A complete normed vector space is called a \textit{Banach space}. $L^{p}[a,b]$ spaces are complete if the integrals in the $L^{p}$ norm are taken to be Lebesgue integrals.
+A normed function space is \textit{complete} if every Cauchy sequence in it converges to an element contained in the normed function space. A complete normed function space is called a \textit{Banach space}. $L^{p}[a,b]$ spaces are complete if the integrals in the $L^{p}$ norm are taken to be Lebesgue integrals.
 
 \subsection{Hilbert spaces}
-A Banach space whose norm is derived from an inner product is called a \textit{Hilbert space}. e.g. if we define the inner product as
+A Hilbert space is a \textit{complete} inner product space. A Banach space can be turned into a Hilbert space by inducing an inner product from the norm. e.g. if we define the inner product as
 \begin{equation} \langle f, g \rangle = \int_{a}^{b} f^{*}g dx \end{equation}
 then the $L^{2}[a,b]$ norm can be written as 
 \begin{equation} ||f||_{2} = \sqrt{\langle f,f \rangle} \end{equation}
 $\langle f, g \rangle$ is a continuous functional of $f$ and $g$.
 A set of functions $\{ u_{n} \}$ is orthonormal if $\langle u_{n}, u_{m}\rangle = \delta_{nm}$. An orthonormal set of functions $\{ u_{n} \}$ within some Hilbert space is \textit{complete} if any element $f$ inside the Hilbert space can be written as 
 \begin{equation} f(x) = \sum_{n=0}^{\infty} a_{n}u_{n}(x) \end{equation}
+\subsubsection{Defining functions in a Hilbert space}
+Functions within a Hilbert space $H$ are defined in terms of the convergence of sequences within $H$. 
+\begin{equation} f \equiv \lim_{n \to \infty} f_{n} \end{equation}
+Note that the limit, and hence $f$, may not exist.
+\subsubsection{Parseval's theorem}
+Given a representation of $f$ with a complete orthonormal representation, the norm of $f$ is given by
+\begin{equation} ||f|| = \big (\sum_{n=1}^{\infty} |a_{n}|^{2} \big )^{1/2} \end{equation}
+\subsection{Orthogonal polynomials}
+Let $L_{w}^{2}[a,b]$ be a real Hilbert space with a real inner product
+\begin{equation} \langle u,v \rangle_{w} = \int_{a}^{b} w(x)u(x)v(x)dx  \end{equation}
 
+where $u(x), v(x)$ are polynomials and $w(x)$ is a weighting function.
+\newline
+\newline
+Using the \textit{Gram-Schmidt procedure}, we recursively define sets of orthonormal polynomials from the set of polynomials $\{ 1, x, x^{2},...x^{n},... \}$. We begin with $P_{0}=1/||\textbf{1}||_{w}$ where $||\textbf{1}||_{w} = \sqrt{\int_{a}^{b} 1*w(x) dx}$. Higher orders of $P_{n}(x)$ are defined recursively as follows
+
+\begin{equation} P_{n+1}(x) = \frac{x P_{n}(x)- \sum_{i=0}^{n}P_{i}(x)\langle P_{i}, xP_{n} \rangle_{w}}{||x P_{n}(x)- \sum_{i=0}^{n}P_{i}(x)\langle P_{i}, xP_{n} \rangle_{w}||_{w}} \end{equation}
+
+Where the numerator represents a construction of the next orthogonal polynomial by multiplying the previous one by $x$ to increase its order and then subtracting all non-orthogonal components of it, with respect to previous orthonormal polynomials defined. The denominator is simply a normalisation.
+\newline
+\newline
+For $n \neq k$, $P_{n}$ is orthogonal to all other $P_{k}$, leading to the following 
+\begin{equation} \langle P_{n}, P_{m} \rangle_{w} = \delta_{nm} \end{equation}
+These polynomials obey a three-term recurrence relation
+\begin{equation} xP_{n}(x) = b_{n}P_{n+1}(x) + a_{n}P_{n}(x) + b_{n-1}P_{n-1}(x) \end{equation} 
+\subsubsection{Legendre polynomials}
+On the interval $[a,b]$, with $a=-1, b=1$ and $w(x)=1$, the \textit{Legendre polynomials} are given by 
+\begin{equation} P_{n}(x) = \frac{1}{2^{n}n!}\frac{d^{n}}{dx^{n}}(x^{2}-1)^{n} \end{equation}
+Note that we do not normalise them by the scalar product, but instead set $P_{n}(1)=1$.
+\newline
+\newline
+Their inner product is
+\begin{equation} \int_{-1}^{1} P_{n}(x)P_{m}(x)dx = \frac{2}{2n+1}\delta_{nm} \end{equation}
+and their three-term recurrence relation is
+\begin{equation} (2n+1)xP_{n}(x) = (n+1)P_{n+1}(x) + nP_{n-1}(x) \end{equation}
+The Legendre polynomials form a complete set of functions for expanding functions in $[-1,1]$.
+
+\subsubsection{Hermite polynomials}
+Hermite polynomials are defined on $(-\infty, \infty)$ with $w(x) = e^{-x^{2}}$. They are given as follows
+\begin{equation} H_{n}(x) = \frac{d^{n}}{dt^{n}}e^{-x^{2}-(x-t)^{2}}\bigg|_{t=0} = (-1)^{n}e^{x^{2}}\frac{d^{n}}{dx^{n}}e^{-x^{2}} \end{equation}
+Their associated inner product is
+\begin{equation} \int_{-\infty}^{\infty} H_{n}(x) H_{m}(x) e^{-x^{2}}dx = 2^{n}n!\sqrt{\pi} \delta_{nm} \end{equation}
+and the associated three-term recurrence relation is
+\begin{equation} 2xH_{n}(x) = H_{n+1}(x) + 2nH_{n-1}(x) \end{equation}
+
+\subsubsection{Tchebychef polynomials}
+Tchebychef polynomials are defined over $[-1, 1]$ and $w(x) = (1-x^{2})^{\pm 1/2}$. Tchebychef polynomials of the first kind are given by
+\begin{equation} T_{n}(x) = cos(ncos^{-1}(x))  \end{equation}
+and Tchebychef polynomials of the second kind are given by
+\begin{equation} U_{n-1}(x) = \frac{sin(ncos^{-1}(x))}{sin(cos^{-1}(x))} = \frac{1}{n}T_{n}'(x) \end{equation}
 \newpage
 \section{Linear ordinary differential equations}
 

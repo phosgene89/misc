@@ -25,6 +25,12 @@
 \contentsline {subsubsection}{\numberline {2.5.3}Convergence in the mean}{12}
 \contentsline {subsection}{\numberline {2.6}Banach spaces}{12}
 \contentsline {subsection}{\numberline {2.7}Hilbert spaces}{12}
-\contentsline {section}{\numberline {3}Linear ordinary differential equations}{13}
-\contentsline {section}{\numberline {4}Linear differential operators}{14}
-\contentsline {section}{\numberline {5}Green functions}{15}
+\contentsline {subsubsection}{\numberline {2.7.1}Defining functions in a Hilbert space}{12}
+\contentsline {subsubsection}{\numberline {2.7.2}Parseval's theorem}{12}
+\contentsline {subsection}{\numberline {2.8}Orthogonal polynomials}{13}
+\contentsline {subsubsection}{\numberline {2.8.1}Legendre polynomials}{13}
+\contentsline {subsubsection}{\numberline {2.8.2}Hermite polynomials}{14}
+\contentsline {subsubsection}{\numberline {2.8.3}Tchebychef polynomials}{14}
+\contentsline {section}{\numberline {3}Linear ordinary differential equations}{15}
+\contentsline {section}{\numberline {4}Linear differential operators}{16}
+\contentsline {section}{\numberline {5}Green functions}{17}

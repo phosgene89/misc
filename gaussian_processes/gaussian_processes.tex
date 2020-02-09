@@ -1,0 +1,55 @@
+\documentclass[]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{bm}
+\usepackage{graphicx}
+
+%opening
+\title{Gaussian Processes}
+\author{Gregory Feldmann}
+
+\begin{document}
+
+\maketitle
+
+\section{Gaussian Distributions}
+If $X$ is a random variable with a univariate Gaussian distribution $\mathcal{N}(\mu, \sigma^{2})$, its probability density function $f(x)$ is given by
+\begin{equation} f(x) = \frac{1}{\sqrt{2\pi \sigma^{2}}} exp\bigg(-\frac{(x-\mu)^{2}}{2\sigma^{2}}\bigg) \end{equation}
+The univarate Gaussian distribution can be extended to multiple dimensions, where the probability density for some vector $\bm{x}$ is given by
+\begin{equation} f(\bm{x}) = \frac{1}{(2\pi)^{D/2}\sqrt{| \bm{\Sigma} |}} exp\bigg( -\frac{1}{2}(\bm{x}-\bm{\mu})^{T}\bm{\Sigma}^{-1}(\bm{x}-\bm{\mu}) \bigg) \end{equation}
+where $\bm{\mu}$ is a vector of expected values and $\bm{\Sigma}$ is the covariance matrix. We write $p(\bm{x}) = \mathcal{N}(\bm{x}|\bm{\mu}, \bm{\Sigma})$ or $X \sim \mathcal{N}(\bm{\mu}, \bm{\Sigma})$.
+\newline
+\newline
+Suppose $\bm{x}^{*} = [\bm{x}, \bm{x}']$. We can express $p(\bm{x}^{*})$ as $p(\bm{x}, \bm{x}')$, which is given as follows
+\begin{equation} p(\bm{x}, \bm{x}') = \mathcal{N}\Bigg(
+\begin{bmatrix}
+\bm{\mu}_{x} \\
+\bm{\mu}_{x'}
+\end{bmatrix},
+\begin{bmatrix}
+\bm{\Sigma}_{xx} & \bm{\Sigma}_{xx'} \\
+\bm{\Sigma}_{x'x} & \bm{\Sigma}_{x'x'}
+\end{bmatrix}
+  \Bigg) \end{equation}
+where $\bm{\Sigma}_{xx'}$ is the covariance matrix of $\bm{x}$ and $\bm{x}'$.
+\subsubsection{Conditional Distribution}
+The conditional distribution $p(\bm{x} | \bm{x}')$ is given by
+\begin{equation} p(\bm{x} | \bm{x}') = \mathcal{N}(\bm{\mu}_{x|x'},\bm{\Sigma}_{x|x'}) \end{equation}
+
+\begin{equation} 
+\bm{\mu}_{x|x'} = \bm{\mu}_{x} + \bm{\Sigma}_{xx'}\bm{\Sigma}_{x'x'}^{-1}(\bm{x}'-\bm{\mu}_{x'})
+\end{equation}
+
+\begin{equation}\bm{\Sigma}_{x|x'} = \bm{\Sigma}_{xx} -\bm{\Sigma}_{xx'}\bm{\Sigma}_{x'x'}^{-1}\bm{\Sigma}_{x'x} \end{equation}
+
+
+
+
+
+
+\begin{equation} 
+\end{equation}
+  
+  
+\end{document}

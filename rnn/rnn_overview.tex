@@ -1,0 +1,101 @@
+\documentclass[]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{cite}
+
+%opening
+\title{Recurrent Neural Networks}
+\author{Gregory Feldmann}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+\end{abstract}
+
+\section{A Vanilla RNN Cell}
+\subsection{Overview}
+The following definition is based on \cite{bullinaria}. Suppose that at time $t$ we have an input sequence $\textbf{x}_{t} = (x_{1}, x_{2}, x_{3},...x_{m})$ of length $m$. A simple RNN cell with one hidden unit $h$ first does the following
+
+\begin{equation}
+h_{t} = f_{hidden}(W_{in} \bullet \textbf{x}_{t} + H \bullet h_{t-1} + b_{hidden})
+\end{equation}
+where $h_{t}$ is the value of the hidden state $h$ at time $t$, $W_{in}$ is a vector of weights applied to $\textbf{x}$, $H$ is a vector of weights applied to $h_{t-1}$, $b_{hidden}$ is the bias and $f_{hidden}$ is a non-linearity such as tanh. The output of the vanilla RNN cell is then computed as follows
+\begin{equation}
+\hat{y}_{t} = f_{out}(W_{out} \bullet h_{t} + b_{out})
+\end{equation}
+where $\hat{y}_{t}$ is the output at time $t$, $W_{out}$ is a vector of weights applied to $h_{t}$, $b_{out}$ is the bias and $f_{out}$ is an activation function.
+
+We can see that $h_{t}$ stores information about previous computations in the RNN. This allows it to 'remember' information and re-use it in future calculations.
+
+\subsection{Vanishing and Exploding Gradients}
+
+\section{Gated Recurrent Units}
+
+Gated recurrent units (GRUs), proposed in \cite{DBLP:journals/corr/ChoMGBSB14}, are more complex than RNNs, but simpler than LSTMs (more on LSTMs below). For this reason they are discussed before LSTMs, despite being discovered after them.
+\newline
+\newline
+GRUs build on Vanilla RNNs by adding \textit{reset} and \textit{update} gates. As in the vanilla RNN case, we assume only one hidden unit. In this case, the reset gate is given by
+\begin{equation}
+r = f_{\sigma} \bigg( W_{r} \bullet \textbf{x}_{t}  + H_{r} \bullet h_{t-1} \bigg)
+\end{equation}
+where $r$ is the value of the reset gate, $W_{r}$ is a vector of weights applied to $x_{t}$, $H_{r}$ is a vector of weights applied to the hidden state $h_{t-1}$ and $f_{\sigma}$ is the sigmoid activation. The update gate is given by
+\begin{equation}
+z = f_{\sigma} \bigg( W_{z} \bullet \textbf{x}_{t}  + H_{z} \bullet h_{t-1} \bigg)
+\end{equation}
+where $z$ is the value of the update gate and the remaining variables are defined similarly to those in the reset gate.
+\newline
+\newline
+The reset and update gates are then used to calculate the hidden state as follows
+\begin{equation}
+h_{t} = zh_{t-1} + (1-z) \tilde{h}_{t}
+\end{equation}
+where $\tilde{h}_{t}$ is the \textit{candidate hidden state} and is defined as follows
+\begin{equation}
+\tilde{h}_{t} = f_{hidden}(W_{\tilde{h}} \bullet \textbf{x}_{t} + w_{\tilde{h}} r h_{t-1} + b_{\tilde{h}})
+\end{equation}
+When the reset gate $r$ is close to $0$, $\tilde{h}$ becomes independant of $h_{t-1}$ and there is greater emphasis on calculating $\tilde{h}$ using information from the input values $\textbf{x}_{t}$. The reset gate then determines how much the candidate hidden state relies on the previous hidden state. This helps to capture short-term dependencies \cite{zhang_lipton_li_smola}.
+\newline
+\newline
+When the update gate is close to $1$, the hidden state becomes independant of $\tilde{h}$. In other words, the update gate determines how much of the old state to retain in the new state. This helps to capture long-term dependencies \cite{zhang_lipton_li_smola}.
+
+
+
+\section{Long Short-Term Memory Cells}
+Long short-term memory (LSTM) neural networks build on the complexity of GRUs with an input gate, forget gate, output gate and memory cell. The input, forget and output gates are all calculated similarly as follows
+\begin{equation}
+I_{t} = f_{sigma}(W_{input} \bullet \textbf{x}_{t} + H_{input} \bullet h_{t-1} + b_{input})
+\end{equation}
+\begin{equation}
+F_{t} = f_{sigma}(W_{forget} \bullet \textbf{x}_{t} + H_{forget} \bullet h_{t-1} + b_{forget})
+\end{equation}
+\begin{equation}
+O_{t} = f_{sigma}(W_{output} \bullet \textbf{x}_{t} + H_{output} \bullet h_{t-1} + b_{output})
+\end{equation}
+The candidate memory cell is given by
+\begin{equation}
+\tilde{C}_{t} = f_{tanh}(W_{\tilde{C}_{t}} \bullet \textbf{x}_{t} + H_{\tilde{C}} \bullet h_{t-1} + b_{\tilde{C}_{t}})
+\end{equation}
+and the memory cell by
+\begin{equation}
+C_{t} = F_{t}  C_{t-1} + I_{t} \tilde{C}_{t}
+\end{equation}
+Finally, the hidden state is given by
+\begin{equation}
+H_{t} = O_{t}f_{tanh}(C_{t})
+\end{equation}
+
+\section{Backpropagation Through Time}
+
+\section{Bi-directional RNNs}
+
+
+\bibliography{refs}{}
+\bibliographystyle{plain}
+
+\end{document}

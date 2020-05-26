@@ -1,0 +1,19 @@
+\begin{thebibliography}{1}
+
+\bibitem{bullinaria}
+John~A Bullinaria.
+\newblock Recurrent neural networks neural computation : Lecture 12, 2015.
+\newblock Available at https://www.cs.bham.ac.uk/~jxb/INC/l12.pdf.
+
+\bibitem{DBLP:journals/corr/ChoMGBSB14}
+Kyunghyun Cho, Bart van Merrienboer, {\c{C}}aglar G{\"{u}}l{\c{c}}ehre, Fethi
+  Bougares, Holger Schwenk, and Yoshua Bengio.
+\newblock Learning phrase representations using {RNN} encoder-decoder for
+  statistical machine translation.
+\newblock {\em CoRR}, abs/1406.1078, 2014.
+
+\bibitem{zhang_lipton_li_smola}
+Aston Zhang, Zack~C Lipton, Mu~Li, and Alex~J Smola.
+\newblock 9.1. gated recurrent units (gru).
+\newblock Available at https://d2l.ai/chapter_recurrent-modern/gru.html.
+\end{thebibliography}

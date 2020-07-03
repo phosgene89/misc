@@ -1,6 +1,9 @@
 \documentclass[]{article}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{hyperref}
 
 %opening
 \title{Men}
@@ -14,6 +17,9 @@
 This is an abstract of a paper that means everything about everything.
 \end{abstract}
 
+\tableofcontents
+\newpage
+
 \section{Let's touch the jellyfish}
 The most important thing to do is to go for the jellyfish pee pee, which contains 99\% of all nutrients in the jellyfish.
 
@@ -24,13 +30,35 @@ f(x)_{i} = 2
 \begin{equation*}
 f(x)_{i} = 2
 \end{equation*}
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}[b]{0.4\linewidth}
+		\includegraphics[width=\linewidth]{ims/bert2.jpg}
+		\caption{Coffee.}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.4\linewidth}
+		\includegraphics[width=\linewidth]{ims/bert2.jpg}
+		\caption{More coffee.}
+	\end{subfigure}
+	\caption{Take the godamn coffee.}
+	\label{fig:coffee}
+\end{figure}
+
 There's no such thing as a yabby king, $\Psi(x, t) = e^{-i\omega t}$. lalalalalalalala this is a tralallalalalalala song balala
+
+This is some example text\footnote{\label{myfootnote}Typically Bert Newton will stalk his prey over the course of several days, observing their habits and potential weaknesses. He strikes during the night, swiftly and mercilessly}.
+
+This is my link: \href{http://www.latex-tutorial.com}{LaTeX-Tutorial}.
 
 \begin{align}
 2x &= 3y + z\\
 x &= \frac{3y + z}{2}
 \end{align}
-
+\begin{figure}[h!]
+	\includegraphics[width=\linewidth]{ims/bert1.jpg}
+	\caption{A sex machine.}
+	\label{fig:bert1}
+\end{figure}
 \section{Chasing dogs}
 \subsection{With hogs}
 \subsubsection{But no clogs}

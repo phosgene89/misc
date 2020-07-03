@@ -1,0 +1,79 @@
+\documentclass[]{article}
+\usepackage{multicol}
+\usepackage{setspace}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage[labelfont=bf]{caption}
+\usepackage{amsmath, amssymb}
+
+%opening
+\title{The Reparamaterisation Trick}
+\author{Greg Feldmann}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+The reparamatisation trick is used to enable variational autoencoders (VAEs) to be trained with gradient descent.
+\end{abstract}
+
+\section{Quick Overview of Variational Autoencoders}
+Let $\mathbf{z}$ be a vector of latent variables, $\mathbf{x}$ be a row vector from a dataset $X$, $q_{\phi}(\mathbf{z}|\mathbf{x})$ be the encoder and $p_{\theta}(\mathbf{x}|\mathbf{z})$ be the decoder. The loss function used is referred to as the evidence lower bound (ELBO). ELBO is defined as follows
+\begin{equation} \mathcal{L}_{\theta, \phi}(\mathbf{x}) = log(p_{\theta}(\mathbf{x})) - D_{KL}(q_{\phi}(\mathbf{z}|\mathbf{x})||p_{\theta}(\mathbf{z}|\mathbf{x}))\end{equation}
+where $D_{KL}$ is the Kullback-Leibler divergence.
+
+\subsection{More on ELBO}
+
+\url{https://www.zinkov.com/posts/2018-11-02-decomposing-the-elbo/}
+
+\section{Optimising ELBO with SGD}
+To optimise our VAE, we need to be able to take gradients of the expected value of ELBO with respect to the network weights $\theta$ and $\phi$. This is easy enough for $\theta$:
+\begin{equation} \nabla_{\theta}\mathbb{E}_{q_{\phi}(\mathbf{z}|\mathbf{x})}[\mathcal{L}_{\theta, \phi}(\mathbf{x})] = \mathbb{E}_{q_{\phi}(\mathbf{z}|\mathbf{x})}[\nabla_{\theta} \mathcal{L}_{\theta, \phi}(\mathbf{x})]
+\end{equation}
+Once the grad operator is inside the expectation, all we have to do is approximate the expectation with a sample. 
+\newline
+\newline
+Things are trickier with $\phi$. As the expectation assumes that $p(\mathbf{z}|\mathbf{x}) = q_{\phi}(\mathbf{z}|\mathbf{x})$, we cannot simply move $\nabla_{\phi}$ in and out of the expectation arbitrarily.
+\begin{equation} \nabla_{\phi}\mathbb{E}_{q_{\phi}(\mathbf{z}|\mathbf{x})}[\mathcal{L}_{\theta, \phi}(\mathbf{x})] \neq \mathbb{E}_{q_{\phi}(\mathbf{z}|\mathbf{x})}[\nabla_{\phi} \mathcal{L}_{\theta, \phi}(\mathbf{x})]
+\end{equation}
+That the left and right hand sides are not equal can be seen as follows:
+\begin{equation} \nabla_{\phi}\mathbb{E}_{q_{\phi}(\mathbf{z}|\mathbf{x})}[\mathcal{L}_{\theta, \phi}(\mathbf{x})] = \nabla_{\phi} \int q_{\phi}(\mathbf{z}|\mathbf{x}) \mathcal{L}_{\theta, \phi}(\mathbf{x}) d\mathbf{x}
+\end{equation}
+
+\begin{equation}
+= \int \nabla_{\phi}(q_{\phi}(\mathbf{z}|\mathbf{x}) \mathcal{L}_{\theta, \phi}(\mathbf{x})) d\mathbf{x}
+\end{equation}
+
+\begin{equation}
+= \int [q_{\phi}(\mathbf{z}|\mathbf{x})(\nabla_{\phi} \mathcal{L}_{\theta, \phi}(\mathbf{x})) + \mathcal{L}_{\theta, \phi}(\mathbf{x}) (\nabla_{\phi} q_{\phi}(\mathbf{z}|\mathbf{x}))] d\mathbf{x}
+\end{equation}
+
+\begin{equation}
+= \int q_{\phi}(\mathbf{z}|\mathbf{x})(\nabla_{\phi} \mathcal{L}_{\theta, \phi}(\mathbf{x})) d\mathbf{x} + \int \mathcal{L}_{\theta, \phi}(\mathbf{x}) (\nabla_{\phi} q_{\phi}(\mathbf{z}|\mathbf{x})) d\mathbf{x}
+\end{equation}
+
+\begin{equation}
+= \mathbb{E}_{q_{\phi}(\mathbf{z}|\mathbf{x})}[\nabla_{\phi} \mathcal{L}_{\theta, \phi}(\mathbf{x})] + \int \mathcal{L}_{\theta, \phi}(\mathbf{x}) (\nabla_{\phi} q_{\phi}(\mathbf{z}|\mathbf{x})) d\mathbf{x}
+\end{equation}
+This isn't in a form that we can easily handle. In particular, $\mathbf{z} \sim q_{\phi}(\mathbf{z}|\mathbf{x})$, meaning $\mathbf{z}$ is stochastic rather than deterministic. This is where the reparamaterisation trick comes into play. We can make $\mathbf{z}$ deterministic by making it a function of a stochastic variable, $\epsilon$:
+
+\begin{equation}
+\mathbf{z} = g(\epsilon, \phi, \mathbf{x})
+\end{equation}
+After replacing $\mathbf{z}$ with $g(\epsilon, \phi, \mathbf{x})$, the expectation is then taken over the distribution of $\epsilon$. The stochasticity is now separated from $\theta$, allowing us to calculate $ \nabla_{\phi}\mathbb{E}_{q_{\phi}(\mathbf{z}|\mathbf{x})}[\mathcal{L}_{\theta, \phi}(\mathbf{x})]
+$ as follows:
+\begin{equation}
+\nabla_{\phi}\mathbb{E}_{q_{\phi}(\mathbf{z}|\mathbf{x})}[\mathcal{L}_{\theta, \phi}(\mathbf{x})] = \nabla_{\phi}\mathbb{E}_{p(\epsilon)}[\mathcal{L}_{\theta, \phi}(\mathbf{x})]
+\end{equation}
+
+\begin{equation}
+= \mathbb{E}_{p(\epsilon)}[\nabla_{\phi}\mathcal{L}_{\theta, \phi}(\mathbf{x})]
+\end{equation}
+
+\nocite{*}
+\bibliography{refs}
+\bibliographystyle{amsplain}
+\end{document}

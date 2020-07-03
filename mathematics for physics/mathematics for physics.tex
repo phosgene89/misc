@@ -1,0 +1,355 @@
+\documentclass[]{article}
+\usepackage[parfill]{parskip}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+
+%opening
+\title{Notes for Mathematics for Physics: A Guided Tour for Graduate Students}
+\author{Gregory Feldmann}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section{Calculus of variations}
+
+A functional $J$ is a map $J:C^{\infty}(\mathcal{R}^{n}) \rightarrow \mathcal{R}$. We restrict ourselves to functionals of the form
+
+\begin{equation} J[y] = \int_{x_{1}}^{x_{2}} F(x,y,y^{(1)},y^{(2)},...)dx \label{functional_def} \end{equation}
+where $y^{(n)}$ denotes the $n^{th}$ derivative of $y$ with respect to $x$.
+
+\subsection{Functionals of $y$ and $y^{(1)}$}
+
+For $J=\int Fdx$, where $f$ depends only on $x$, $y$ and $y'$, we show how to derive the Euler-Lagrange equation and find the $y$ that optimises $J$. 
+
+Let $\epsilon$ be a small, arbitrary real number, $\eta$ an arbitrary function of x and $y$ an arbitrary function of $x$ in $C^{\infty}$. A small perturbation in $y$ is given by $y = y^{*} + \epsilon \eta$, where $y^{*}$ is the unperturbed $y$. We require that $y^{*}(x_{1}) = y(x_{1})$ and $y^{*}(x_{2}) = y(x_{2})$, ie $\eta (x_{1}) = \eta(x_{2}) = 0$. Let $\delta J = J[y^{*} + \epsilon \eta] - J[y^{*}] $ and $\delta  F = \{ F(x, y, y^{(1)})-F(x,y^{*},y^{*(1)}) \}$, where $\delta$ is the variation operator. The change in $J$ associated with going from $y$ to $y^{*} + \epsilon \eta$ is given by
+\begin{equation} \delta J = \int_{x_{1}}^{x_{2}} \delta  F dx \label{variational_functional_example}\end{equation}
+
+A necessary condition for the minimisation of $J$ is $\delta J= 0$. We then use a Taylor expansion of $\delta F$ around $\epsilon = 0$, discarding all terms second order and above.
+
+\begin{equation} \delta F \approx \epsilon \bigg(\frac{\partial F}{\partial y} \eta+ \frac{\partial F}{\partial y^{(1)}}\eta^{(1)}\bigg) \label{taylor_expansion_example} \end{equation}
+Using integration by parts, we can find an alternate expression for $\frac{\partial F}{\partial y^{(1)}}\eta^{(1)}$
+
+\begin{equation*} \int_{x_{1}}^{x_{2}} \frac{\partial F}{\partial y^{(1)}}\eta^{(1)}dx = \frac{\partial F}{\partial y^{(1)}}\eta \bigg|_{x_1}^{x_{2}} - \int_{x_{1}}^{x_{2}} \frac{d}{dx}\frac{\partial F}{\partial y^{(1)}}\eta dx\end{equation*}
+
+As we assume $\epsilon =0$ at $x_{1}$ and $x_{2}$, $\frac{\partial F}{\partial y^{(1)}}\eta \bigg|_{x_1}^{x_{2}} = 0$. So we have
+
+\begin{equation*} \frac{\partial F}{\partial y^{(1)}}\eta^{(1)} = - \frac{d}{dx}\frac{\partial F}{\partial y^{(1)}}\eta \end{equation*}
+
+We substitute this into ($\ref{taylor_expansion_example}$) to obtain
+
+\begin{equation*} \delta F \approx \epsilon \eta \bigg(\frac{\partial F}{\partial y} - \frac{d}{dx}\frac{\partial F}{\partial y^{(1)}}\bigg) \label{simplified_taylor_expansion} \end{equation*}
+
+Substituting this expression into ($\ref{variational_functional_example}$) results in
+
+\begin{equation*} \int_{x_{1}}^{x_{2}} \delta F dx = \int_{x_{1}}^{x_{2}} \epsilon \eta \bigg(\frac{\partial F}{\partial y} - \frac{d}{dx}\frac{\partial F}{\partial y^{(1)}}\bigg) dx = 0 \label{variational_eta_final} \end{equation*}
+
+Supposing that $\eta$ and $\epsilon$ are not identically zero, we conclude that 
+
+\begin{equation} \frac{\partial F}{\partial y} - \frac{d}{dx}\frac{\partial F}{\partial y^{(1)}} = 0 \label{euler_lagrange_eq1} \end{equation}
+
+($\ref{euler_lagrange_eq1}$) is known as an \textit{Euler-Lagrange equation}. The expression on the left hand side is the \textit{functional derivative} of $J$ with respect to $y$, $\frac{\delta J}{\delta y}$.
+
+\subsection{Functionals of higher order derivatives}
+If $F$ is a function of higher order derivatives of $y$, e.g. $y^{(5)}$ or $y^{(26)}$, then the Euler-Lagrange equation is extended as follows. Suppose $F$ is a function of the $N^{th}$ order derivative of $y$. The Euler-Lagrange equation is
+
+\begin{equation} \frac{\partial F}{\partial y} + \sum_{n=1}^{N} (-1)^{n}\frac{d^{n}}{dx^{n}} \bigg(\frac{\partial F}{\partial y^{(n)}}\bigg) = 0 \end{equation}  
+
+\subsection{Functionals of multiple functions}
+When $F$ is a function of multiple functions $y_{i}$ and their derivatives $y_{ix}$, where each $y_{i}$ is a function of $x$, then we get a separate Euler-Lagrange equation for each $y_{i}$
+
+\begin{equation} \frac{\partial F}{\partial y_{i}} - \frac{d}{dx}\frac{\partial F}{\partial y_{i}^{(1)}} = 0 \end{equation}
+
+\subsection{Functionals of multiple functions and higher order derivatives}
+Combining the previous two sections, the Euler-Lagrange equations for functionals of multiple functions $y_{i}$ and higher order derivatives $y_{i}^{(n)}$ are given by
+
+\begin{equation} \frac{\partial F}{\partial y_{i}} + \sum_{n=1}^{N} (-1)^{n}\frac{d^{n}}{dx^{n}} \bigg(\frac{\partial F}{\partial y^{(n)}_{i}}\bigg) = 0 \end{equation}  
+
+for each $i$ corresponding to a $y_{i}$.
+
+\subsection{Functionals of multiple functions, multiple independent variables and higher order derivatives}
+The next logical step is to introduce multiple independent variables. Let $\mu_{m}$ be indices spanning the independent variables $x_{\mu_{m}}$. Let $y^{(n)_{\mu_{m}}}_{i}$ denote the $n^{th}$ partial derivative of $y_{i}$ with respect to $x_{\mu_{m}}$. Given a total of M independant variables, functionals of multiple functions $y_{i}$ and higher order derivatives $y^{(n)_{\mu_{m}}}_{i}$, the Euler-Lagrange equation for each $y_{i}$  is as follows
+
+\begin{equation} \frac{\partial F}{\partial y_{i}} +  \sum_{n=1}^{N} \sum_{\mu_{1} \leq ...\leq \mu_{n}} (-1)^{n}\frac{d^{n}}{d x_{\mu_{1}}...d x_{\mu_{n}}} \bigg(\frac{\partial F}{\partial y^{(1)_{\mu_{1}}}_{i} ...\partial y^{(1)_{\mu_{n}}}_{i}}\bigg) = 0 \label{eulerlagrange_higherderivatives_functions_variables} \end{equation}  
+Note that $\mu_{m}$ is an arbitrary reference to any $x_m$. Hence $x_{\mu_{1}}$ may be equal to $x_{\mu{2}}$ even though $x_{1} \neq x_{2}$. For $3$ independent variables $x_{1}$, $x_{2}$ and $x_{3}$, and $n=2$, we have that
+
+\begin{equation*} \sum_{\mu_{1} \leq ...\leq \mu_{2}}d x_{\mu_{1}}d x_{\mu_{2}} = d x_{1}^{2} + d x_{1} d x_{2} + d x_{1} d x_{3} +d x_{2}^{2} + d x_{2}d x_{3} + d x_{3}^{2}\end{equation*}
+
+For the same example, but with $n=1$, we have
+\begin{equation*} \sum_{\mu_{1} \leq ...\leq \mu_{1}}d x_{\mu_{1}}d x_{\mu_{1}} = d x_{1}^{2} + d x_{2}^{2} + d x_{3}^{2}\end{equation*}
+\subsection{Constraints}
+We will frequently want to find the stationary point of $\delta J$ subject to certain constraints. 
+\subsubsection{Integral constraints}
+The simplest constraints are integral constraints 
+
+\begin{equation} K = \int_{x_{1}}^{x_{2}} G(x, y, y^{(1)},y^{(2)},...) dx \label{integral_constraint}\end{equation}
+
+where $K$ is a constant and $G$ is a functional.
+
+To incorporate this into our Euler-Lagrange equations, we define $F_{c}$ as follows
+
+\begin{equation*} F_{c} = F + \lambda G \end{equation*}
+
+and work with $F_{c}$ in the same way we would with $F$, subject to the constraints being satisfied. e.g. ($\ref{eulerlagrange_higherderivatives_functions_variables}$) becomes
+\begin{equation*} \frac{\partial F_{c}}{\partial y_{i}} +  \sum_{n=1}^{N} \sum_{\mu_{1} \leq ...\leq \mu_{n}} (-1)^{n}\frac{d^{n}}{d x_{\mu_{1}}...d x_{\mu_{n}}} \bigg(\frac{\partial F_{c}}{\partial y^{(1)_{\mu_{1}}}_{i} ...\partial y^{(1)_{\mu_{n}}}_{i}}\bigg) = 0 \end{equation*}  
+and our solutions must also satisfy ($\ref{integral_constraint}$).
+
+Given multiple functionals $G_{m}$ in integral constraints, $F_{c}$ is given by
+
+\begin{equation*} F_{c} = F + \sum_{m} \lambda_{m} G_{m} \end{equation*}
+and solutions to the Euler-Lagrange equations must satisfy the constraints.
+\subsubsection{Holonomic constraints}
+Equivalence constraints not involving derivatives of functions that can be expressed without an integral are referred to as holonomic constraints. They take the form
+
+\begin{equation} K = G(x,y) \end{equation}
+where $G$ and $K$ are defined as in the previous section. We now define $F_{c}$ as
+\begin{equation} F_{c} = F + \int_{x_{1}}^{x_{2}} \lambda (x) G(x,y)dx \end{equation}
+where $\lambda (x)$ is a Lagrange multiplier. Take note that our Lagrange multiplier is now dependant on our independent variables. Given $F_{c}$, we proceed in the same manner as for integral constraints.
+\subsubsection{Non-holonomic constraints}
+Non-holonomic constraints are equivalence constraints that involve derivatives of functions. They are not covered.
+\subsection{The first integral}
+The quantity $I = F - y^{(1)}\frac{\partial f}{\partial y^{(1)}}$ is called the \textit{first integral}. Suppose $F$ is directly dependent only on $y$ and $y^{(1)}$. We then have the following
+\begin{equation} \begin{split} \frac{d}{dx}\bigg(F - y^{(1)} \frac{\partial F}{\partial y^{(1)}} \bigg) & = y^{(1)}\frac{\partial F}{\partial y} + y^{(2)} \frac{\partial F}{\partial y^{(1)}} - y^{(2)}\frac{\partial F}{\partial y^{(1)}} - y^{(1)}\frac{d}{dx}\bigg( \frac{\partial F}{\partial y^{(1)}} \bigg) \\
+& = y^{(1)} \bigg( \frac{\partial f}{\partial y} - \frac{d}{dx} \bigg( \frac{\partial f}{\partial y^{(1)}} \bigg) \bigg)
+\end{split} \end{equation}
+The bracketed expression on the second line is the Euler-Lagrange equation and hence is set to $0$. We therefore have the result that the first integral $I$ is equal $0$ when $F$ has no direct dependence on $x$.
+
+For multiple functions $y_{i}$ the first integral becomes
+\begin{equation} I = F - \sum_{i} y_{i}^{(1)} \frac{\partial F}{\partial  y_{i}^{(1)}} \end{equation}
+\subsection{Free boundary value problems}
+When an end-point is free to vary, eg $x_{2}$ is not specified, then we must also determine $x_{2}$ as part of the optimisation solution.
+
+The general procedure is to proceed as if $x_{2}$ is fixed and find the extremal $y$. $x_{2}$ can then be determined by solving
+
+\begin{equation} \mathcal{L}(x_{2}, y(x_{2}), y'(x_{2}),...) = 0\end{equation}
+
+for $x_{2}$. This is referred to as the\textit{ natural boundary condition} for $x_{2}$. A corresponding condition applies to determine $x_{1}$, should it also not be predetermined.
+
+\subsection{Examples}
+
+\subsubsection{Example 1: Brachistochrone}
+Suppose a bead is sliding down a wire from a height of $y_{0}$ to $y_{1}$ along a length of wire with start and end $x$ coordinates being $x_{0}$ and $x_{1}$. We want to know the shape of the wire that results in the particle moving from $x_{0}$ to $x_{1}$ as quickly as possible under the force of gravity alone.
+
+The time taken by the bead to slide down the wire is given by the distance travelled divided by the velocity of the bead. Using the fact that $T + V = constant$ and choosing a reference point of $V$ such that the $constant = 0$ allows us to derive an expression for the velocity, $v = \sqrt{2gy}$. The distance travelled is simply the integral of $ds$, hence our functional is
+
+\begin{equation} \begin{split} t_{total} & =  \int_{y_{0}} ^{y_{1}} \frac{ds}{\sqrt{2gy}} \\
+& = \int_{y_{0}} ^{y_{1}} \sqrt{\frac{1+y'^{2}}{2gy}}dt \end{split} \end{equation}
+
+We thus have 
+
+\begin{equation} F(y,y') = \sqrt{\frac{1+y'^{2}}{2gy}} \end{equation}
+
+Using the Euler-Lagrange equation and solving the resulting differential equation yields a solution of
+
+\begin{equation} \begin{split} x & = at - asin(t)\\
+y & = a-acos(t) \end{split} \end{equation}
+
+where $a$ is some constant chosen to satisfy the boundary conditions below
+
+\begin{equation} \begin{split} (x_{0}, y_{0}) & = (at - asin(0), a-acos(0)) \\
+(x_{1}, y_{1}) & = (at - asin(t_{total}), a-acos(t_{total})) \end{split} \end{equation}
+
+\subsubsection{Interlude: Lagrangian mechanics}
+Lagrangian mechanics is a formulation of classical mechanics that uses functionals composed of the difference between kinetic and potential energy, as opposed to the traditional approach based on Newton's laws. The Lagrangian $\mathcal{L}$ is given as follows
+\begin{equation} \mathcal{L} = T - V \end{equation}
+where $T$ is the kinetic energy and $V$ is the potential energy. 
+
+We are free to write $T$ and $V$ in terms of whatever variables we would like. Typically the independent variable is time and functions dependent on time are denoted by $q_{i}$.
+
+The Principle of Least Action states that the time evolution of a physical system between time $t_{0}$ and $t_{1}$ minimises the \textit{action} of the system. The action $\mathcal{S}$ is defined as 
+
+\begin{equation} \mathcal{S} = \int_{t_{0}}^{t_{1}} \mathcal{L} dt \end{equation}
+
+By minimising the action using the calculus of variations we can therefore find the equations describing the time evolution of a system.
+
+\subsubsection{Example 2: Constrained optimisation}
+Suppose a chain is fixed to two walls and we would like to determine the shape in which it will hang. We can do this by minimising the potential energy using a functional. The potential energy at each point in the chain is given by $PE = \mu gy(x) ds$, where $\mu$ is the density of the chain per unit length, $g$ is the force of gravity and $y(x)$ is the height. Integrating over the length of the chain gives us the total potential energy $V$, and is a functional that we can minimise with respect to $y$.
+
+\begin{equation} V = g \mu \int_{a}^{b} y\sqrt{1-y'^{2}}dx \end{equation}
+
+We then have
+
+\begin{equation} F(y, y') = y\sqrt{1-y'^{2}}\end{equation}
+
+The associated Euler-Lagrange equation is as follows
+
+\begin{equation} \frac{\partial F}{\partial y} - \frac{d}{dx}\frac{\partial F}{\partial y'} = \sqrt{1-y'^{2}} -  \end{equation}
+
+$\textbf{THE ABOVE IS UNFINISHED}$
+
+\nocite{*}
+\bibliography{refs}
+\bibliographystyle{amsplain}
+
+\newpage
+\section{Function spaces}
+\subsection{Vector spaces}
+A vector space consists of a set $V$ (whose elements are referred to as vectors), a field $\mathbb{F}$ (whose elements are called scalars) and two operators:
+\begin{enumerate}
+	\item A vector addition operation $+$ such that for $\textbf{u},\textbf{v} \in V$, $\textbf{u} + \textbf{v} \in V$.
+	\item A scalar multiplication operation such that for $\lambda \in \mathbb{F}$ and $\textbf{u} \in V$, $\lambda \textbf{u} \in V$.
+\end{enumerate}
+which satisfy the following conditions
+\begin{enumerate}
+	\item For $\forall \textbf{u},\textbf{v},\textbf{w} \in V$, 
+	\begin{equation} (\textbf{u} + \textbf{v}) + \textbf{w} = \textbf{u} + (\textbf{v} + \textbf{w}) \end{equation}
+	\item There exists some $\textbf{0} \in V$ such that for $\forall \textbf{v} \in V$, \begin{equation}\textbf{v} + \textbf{0} = \textbf{v}\end{equation}
+	\item For $\forall \textbf{v} \in V$, there exists some $-\textbf{v} \in V$ such that \begin{equation}\textbf{v}+-\textbf{v} = \textbf{v}-\textbf{v}=\textbf{0}\end{equation}
+	\item For $a,b \in \mathbb{F}$ and $\textbf{v} \in V$, $(ab)\mathbf{v} = a(b\mathbf{v})$.
+	\item For $\forall \textbf{v} \in V$, $1\textbf{v} = \textbf{v}$.
+	\item For $a,b \in \mathbb{F}$ and $\textbf{u}, \textbf{v} \in V$, \begin{equation} (a + b)\textbf{u} = a\textbf{u} + b\textbf{u} \end{equation}
+	and
+	\begin{equation} a(\textbf{u} + \textbf{v}) = a\textbf{u} + a\textbf{v}
+	\end{equation}
+\end{enumerate}
+\subsection{Functions as vectors}
+Taking functions to be infinite-dimensional vectors, we can take the vectors in a vector space to be functions. We refer to vector spaces of functions as function spaces. We use this to build up Hilbert spaces. An example of a vector space of functions is $C^{n}[a,b]$ - the set of all functions in $[a,b]$ with continuous $n^{th}$ order derivatives.
+\subsection{Inner products}
+An inner product associates two functions $f, g \in V$ with a real number and is denoted by $\langle f, g \rangle$. It obeys three axioms:
+\begin{enumerate}
+	\item Bilinearity \begin{equation} \langle cf+dg, h \rangle = c\langle f, h  \rangle + d\langle g , h \rangle \end{equation}
+	\begin{equation} \langle f,cg+ dh \rangle = c\langle f, g  \rangle + d\langle f , h \rangle \end{equation}
+	\item Symmetry \begin{equation} \langle f,g \rangle = \langle g,f \rangle \end{equation}
+	\item Non-negative \begin{equation} \langle f,g \rangle \geq 0 \end{equation}
+	with $\langle f,f \rangle = 0$ iff $f = 0$.
+\end{enumerate}
+
+\subsection{Norms}
+The norm of a function space provides a measure of the 'size' of its elements. The norm of some function space $V$ is a function $||.||: V \longrightarrow \mathbb{F}$ satisfying the following conditions:
+\newline
+\newline
+1. $||f|| \geq 0||$, with $||f|| = 0$ iff $f=0$, \newline
+2. $||f+g|| \leq ||f|| + ||g||$,\newline
+3. $||\lambda f|| = |\lambda|||f||$ for constant $\lambda$.
+\newline
+\newline
+We can obtain a norm from an inner product by taking the $p^{th}$ root of the inner product of some function $f$ with itself: $\langle f,f \rangle^{1/p}$. Note that \textit{a norm is not necessarily linear}, so the set of all norms built from inner products is only a subset of all possible norms.
+\newline
+\newline
+The space $L^{p}[a,b]$ is defined to be a function space over the interval $[a,b]$, function set $F[a,b]$, for $1 \leq p < \infty$ and a norm of
+\begin{equation} ||f||_{p} = \bigg( \int_{a}^{b} |f(x)|^{p}dx  \bigg)^{1/p} \end{equation}
+$||f||_{p}$ must be finite for $\forall f \in F$.
+
+The elements of $L^{p}[a,b]$ are equivalence classes of functions, with functions in the same equivalence class differing by a function of norm $0$. Note that a function can have a norm of zero despite not being identically 0 if it is only non-zero at a finite number of points. This violates the first condition for being a norm, but forget that for now.
+\subsection{Metric spaces}
+Let $V$ be a set. A metric on $V$ is a function $d: V \times V \longrightarrow \mathbb{R}$ such that for all $f,g,h \in V$ we have
+\begin{enumerate}
+	\item Non-negativity: $ 0 \leq d(f,g) < \infty $
+	\item Uniqueness: $d(f,g) = 0$ if and only if $f=g$.
+	\item Symmetry: $d(f,g) = d(g,f)$
+	\item The triangle inequality: $d(f,g) \leq d(f,h) + d(h,g)$
+\end{enumerate}
+\subsection{From inner products to norms, and norms to metrics}
+An inner product $\langle,\rangle$ can be converted into a norm $||.||$ by setting $||f|| = \langle f,f \rangle$. $||.||$ is referred to as the \textit{induced norm}.
+\newline
+\newline
+A norm $||.||$ can be converted to a metric $d$ by setting $d(f,g) = ||f-g||$. $d$ is referred to as the \textit{induced metric}.
+\subsection{Convergence of functions}
+Sequence of functions $f_{n}$ may converge to $f$ \textit{pointwise}, \textit{uniformly} or \textit{in the mean}.
+\subsubsection{Pointwise convergence}
+For all $x$ and all $\epsilon > 0$, there exists some $N$ such that, if $n \geq N$, then $|f_{n} - f| < \epsilon$. 
+\subsubsection{Uniform convergence}
+For all $\epsilon > 0$ there exists some $N$ such that, for all $x$ and $n > N$, $sup|f_{n}(x) - f(x)| < \epsilon$.
+\subsubsection{Convergence in the mean}
+For all $\epsilon > 0$ there exists some $N$ such that $\int |f_{n}(x) - f(x)|dx < \epsilon$ for $n > N$.
+
+\subsection{Banach spaces}
+A normed function space is \textit{complete} if every Cauchy sequence in it converges to an element contained in the normed function space. A complete normed function space is called a \textit{Banach space}. $L^{p}[a,b]$ spaces are complete if the integrals in the $L^{p}$ norm are taken to be Lebesgue integrals.
+
+\subsection{Hilbert spaces}
+A Hilbert space is a \textit{complete} inner product space. A Banach space can be turned into a Hilbert space by inducing an inner product from the norm. e.g. if we define the inner product as
+\begin{equation} \langle f, g \rangle = \int_{a}^{b} f^{*}g dx \end{equation}
+then the $L^{2}[a,b]$ norm can be written as 
+\begin{equation} ||f||_{2} = \sqrt{\langle f,f \rangle} \end{equation}
+A Banach space differs from a Hilbert space in that a Banach space does not necessarily have an inner product, whereas a Hilbert space has an inner product which induces a norm.
+$\langle f, g \rangle$ is a continuous functional of $f$ and $g$.
+A set of functions $\{ u_{n} \}$ is orthonormal if $\langle u_{n}, u_{m}\rangle = \delta_{nm}$. An orthonormal set of functions $\{ u_{n} \}$ within some Hilbert space is \textit{complete} if any element $f$ inside the Hilbert space can be written as 
+\begin{equation} f(x) = \sum_{n=0}^{\infty} a_{n}u_{n}(x) \end{equation}
+\subsubsection{Defining functions in a Hilbert space}
+Functions within a Hilbert space $H$ are defined in terms of the convergence of sequences within $H$. 
+\begin{equation} f \equiv \lim_{n \to \infty} f_{n} \end{equation}
+Note that the limit, and hence $f$, may not exist.
+\subsubsection{Parseval's theorem}
+Given a representation of $f$ with a complete orthonormal representation, the norm of $f$ is given by
+\begin{equation} ||f|| = \big (\sum_{n=1}^{\infty} |a_{n}|^{2} \big )^{1/2} \end{equation}
+\subsection{Orthogonal polynomials}
+Let $L_{w}^{2}[a,b]$ be a real Hilbert space with a real inner product
+\begin{equation} \langle u,v \rangle_{w} = \int_{a}^{b} w(x)u(x)v(x)dx  \end{equation}
+
+where $u(x), v(x)$ are polynomials and $w(x)$ is a weighting function.
+\newline
+\newline
+Using the \textit{Gram-Schmidt procedure}, we recursively define sets of orthonormal polynomials from the set of polynomials $\{ 1, x, x^{2},...x^{n},... \}$. We begin with $P_{0}=1/||\textbf{1}||_{w}$ where $||\textbf{1}||_{w} = \sqrt{\int_{a}^{b} 1*w(x) dx}$. Higher orders of $P_{n}(x)$ are defined recursively as follows
+
+\begin{equation} P_{n+1}(x) = \frac{x P_{n}(x)- \sum_{i=0}^{n}P_{i}(x)\langle P_{i}, xP_{n} \rangle_{w}}{||x P_{n}(x)- \sum_{i=0}^{n}P_{i}(x)\langle P_{i}, xP_{n} \rangle_{w}||_{w}} \end{equation}
+
+Where the numerator represents a construction of the next orthogonal polynomial by multiplying the previous one by $x$ to increase its order and then subtracting all non-orthogonal components of it, with respect to previous orthonormal polynomials defined. The denominator is simply a normalisation.
+\newline
+\newline
+For $n \neq k$, $P_{n}$ is orthogonal to all other $P_{k}$, leading to the following 
+\begin{equation} \langle P_{n}, P_{m} \rangle_{w} = \delta_{nm} \end{equation}
+These polynomials obey a three-term recurrence relation
+\begin{equation} xP_{n}(x) = b_{n}P_{n+1}(x) + a_{n}P_{n}(x) + b_{n-1}P_{n-1}(x) \end{equation} 
+\subsubsection{Legendre polynomials}
+On the interval $[a,b]$, with $a=-1, b=1$ and $w(x)=1$, the \textit{Legendre polynomials} are given by 
+\begin{equation} P_{n}(x) = \frac{1}{2^{n}n!}\frac{d^{n}}{dx^{n}}(x^{2}-1)^{n} \end{equation}
+Note that we do not normalise them by the scalar product, but instead set $P_{n}(1)=1$.
+\newline
+\newline
+Their inner product is
+\begin{equation} \int_{-1}^{1} P_{n}(x)P_{m}(x)dx = \frac{2}{2n+1}\delta_{nm} \end{equation}
+and their three-term recurrence relation is
+\begin{equation} (2n+1)xP_{n}(x) = (n+1)P_{n+1}(x) + nP_{n-1}(x) \end{equation}
+The Legendre polynomials form a complete set of functions for expanding functions in $[-1,1]$.
+
+\subsubsection{Hermite polynomials}
+Hermite polynomials are defined on $(-\infty, \infty)$ with $w(x) = e^{-x^{2}}$. They are given as follows
+\begin{equation} H_{n}(x) = \frac{d^{n}}{dt^{n}}e^{-x^{2}-(x-t)^{2}}\bigg|_{t=0} = (-1)^{n}e^{x^{2}}\frac{d^{n}}{dx^{n}}e^{-x^{2}} \end{equation}
+Their associated inner product is
+\begin{equation} \int_{-\infty}^{\infty} H_{n}(x) H_{m}(x) e^{-x^{2}}dx = 2^{n}n!\sqrt{\pi} \delta_{nm} \end{equation}
+and the associated three-term recurrence relation is
+\begin{equation} 2xH_{n}(x) = H_{n+1}(x) + 2nH_{n-1}(x) \end{equation}
+
+\subsubsection{Tchebychef polynomials}
+Tchebychef polynomials are defined over $[-1, 1]$ and $w(x) = (1-x^{2})^{\pm 1/2}$. Tchebychef polynomials of the first kind are given by
+\begin{equation} T_{n}(x) = cos(ncos^{-1}(x))  \end{equation}
+and Tchebychef polynomials of the second kind are given by
+\begin{equation} U_{n-1}(x) = \frac{sin(ncos^{-1}(x))}{sin(cos^{-1}(x))} = \frac{1}{n}T_{n}'(x) \end{equation}
+Both Tchebechef polynomials obey the same recurrence relation
+\begin{equation} 2xT_{n} = T_{n+1} + T_{n-1} \end{equation}
+The inner products of Tchebychef polynomials are as below
+\begin{equation} \int_{0}^{\pi} T_{n}T_{m}dx = h_{n}\delta_{nm} \end{equation}
+\begin{equation} \int_{0}^{\pi} U_{n}U_{m}dx = \frac{\pi}{2}\delta_{nm} \end{equation}
+Where $h_{n}=\pi$ for $n=0$ and $h_{n}=\pi/2$ for $n>0$.
+\subsection{Linear operators}
+Linear operators in function spaces are analogous to linear operators on matrices.
+\newline
+\newline
+An operator $A$ operating on a function $f$ can calculated as follows
+\begin{equation} g(x) = \int_{a}^{b}A(x,y)f(y)dy \end{equation}
+In this case, $A$ is an \textit{integral kernel}.
+\newline
+\newline
+Suppose we have an operator $A(x,y) = \delta(x-y)$. The action of $A$ on f is
+\begin{equation} f(x) = \int_{a}^{b} \delta(x-y)f(y)dy \end{equation}
+$\delta(x-y)$ is then clearly the identity operator.
+
+\subsection{Bibliography}
+ \url{http://www.princeton.edu/~aaa/Public/Teaching/ORF523/S16/ORF523_S16_Lec2_gh.pdf}
+\newline
+\url{http://people.math.gatech.edu/~heil/books/metricbrief.pdf}
+\newpage
+\section{Linear ordinary differential equations}
+
+
+\newpage
+\section{Linear differential operators}
+
+
+\newpage
+\section{Green functions}
+
+\end{document}

@@ -1,0 +1,21 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{1}
+
+\bibitem{huntcalculusvariations}
+R.E. Hunt, \emph{Chapter 1 variational methods}, 2002.
+
+\bibitem{schechter1967variational}
+R.S. Schechter, \emph{The variational method in engineering}, McGraw-Hill
+  chemical engineering series, McGraw-Hill, 1967.
+
+\bibitem{a1b355c8735b4d728055107aa8b9234a}
+M.~Stone and P.~Goldbart, \emph{Mathematics for physics: A guided tour for
+  graduate students}, Cambridge University Press, United States, 2009.
+
+\end{thebibliography}

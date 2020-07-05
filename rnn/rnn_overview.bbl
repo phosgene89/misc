@@ -1,5 +1,16 @@
 \begin{thebibliography}{1}
 
+\bibitem{298725}
+Y.~{Bengio}, P.~{Frasconi}, and P.~{Simard}.
+\newblock The problem of learning long-term dependencies in recurrent networks.
+\newblock In {\em IEEE International Conference on Neural Networks}, pages
+  1183--1188 vol.3, 1993.
+
+\bibitem{279181}
+Y.~{Bengio}, P.~{Simard}, and P.~{Frasconi}.
+\newblock Learning long-term dependencies with gradient descent is difficult.
+\newblock {\em IEEE Transactions on Neural Networks}, 5(2):157--166, 1994.
+
 \bibitem{bullinaria}
 John~A Bullinaria.
 \newblock Recurrent neural networks neural computation : Lecture 12, 2015.
@@ -12,8 +23,21 @@ Kyunghyun Cho, Bart van Merrienboer, {\c{C}}aglar G{\"{u}}l{\c{c}}ehre, Fethi
   statistical machine translation.
 \newblock {\em CoRR}, abs/1406.1078, 2014.
 
-\bibitem{zhang_lipton_li_smola}
-Aston Zhang, Zack~C Lipton, Mu~Li, and Alex~J Smola.
-\newblock 9.1. gated recurrent units (gru).
-\newblock Available at https://d2l.ai/chapter_recurrent-modern/gru.html.
+\bibitem{10.5555/3042817.3043083}
+Razvan Pascanu, Tomas Mikolov, and Yoshua Bengio.
+\newblock On the difficulty of training recurrent neural networks.
+\newblock In {\em Proceedings of the 30th International Conference on
+  International Conference on Machine Learning - Volume 28}, ICML’13, page
+  III–1310–III–1318. JMLR.org, 2013.
+
+\bibitem{yu2019review}
+Yong Yu, Xiaosheng Si, Changhua Hu, and Jianxun Zhang.
+\newblock A review of recurrent neural networks: Lstm cells and network
+  architectures.
+\newblock {\em Neural computation}, 31(7):1235--1270, 2019.
+
+\bibitem{zhou2016minimal}
+Guo-Bing Zhou, Jianxin Wu, Chen-Lin Zhang, and Zhi-Hua Zhou.
+\newblock Minimal gated unit for recurrent neural networks, 2016.
+
 \end{thebibliography}

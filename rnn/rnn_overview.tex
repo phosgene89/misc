@@ -5,6 +5,7 @@
 \usepackage{bm}
 \usepackage{graphicx}
 \usepackage{cite}
+\usepackage{verbatim}
 
 %opening
 \title{Recurrent Neural Networks}
@@ -15,38 +16,87 @@
 \maketitle
 
 \begin{abstract}
-
+An overview of Recurrent Neural Network (RNN) architectures and training is given. Vanilla RNN cells and backpropagation through time (BPTT) are covered, as well as the issues with Vanilla RNNs that motivated Gated Recurrent Units (GRUs) and Long Short-Term Memory (LSTM) cells. Only single-node cells are considered to simplify the math, though generalisation to multiple nodes is quite simple.
 \end{abstract}
 
-\section{A Vanilla RNN Cell}
+\section{Vanilla RNN Cells}
 \subsection{Overview}
 The following definition is based on \cite{bullinaria}. Suppose that at time $t$ we have an input sequence $\textbf{x}_{t} = (x_{1}, x_{2}, x_{3},...x_{m})$ of length $m$. A simple RNN cell with one hidden unit $h$ first does the following
-
 \begin{equation}
-h_{t} = f_{hidden}(W_{in} \bullet \textbf{x}_{t} + H \bullet h_{t-1} + b_{hidden})
+a_{hidden, t} = \textbf{w}_{in} \bullet \textbf{x}_{t} + w_{hidden} h_{t-1} + b_{hidden}
 \end{equation}
-where $h_{t}$ is the value of the hidden state $h$ at time $t$, $W_{in}$ is a vector of weights applied to $\textbf{x}$, $H$ is a vector of weights applied to $h_{t-1}$, $b_{hidden}$ is the bias and $f_{hidden}$ is a non-linearity such as tanh. The output of the vanilla RNN cell is then computed as follows
 \begin{equation}
-\hat{y}_{t} = f_{out}(W_{out} \bullet h_{t} + b_{out})
+h_{t} = f_{hidden}(a_{hidden,t})
 \end{equation}
-where $\hat{y}_{t}$ is the output at time $t$, $W_{out}$ is a vector of weights applied to $h_{t}$, $b_{out}$ is the bias and $f_{out}$ is an activation function.
-
+where $h_{t}$ is the value of the hidden state $h$ at time $t$, $\textbf{w}_{in}$ is a vector of weights applied to $\textbf{x}$, $w_{hidden}$ is the weight applied to $h_{t-1}$, $b_{hidden}$ is the bias and $f_{hidden}$ is a non-linearity such as tanh. The output of the vanilla RNN cell is then computed as follows
+\begin{equation}
+a_{out} = w_{out} h_{t} + b_{out}
+\end{equation}
+\begin{equation}
+\hat{y}_{t} = f_{out}(a_{out})
+\end{equation}
+where $\hat{y}_{t}$ is the output at time $t$, $w_{out}$ is the weight applied to $h_{t}$, $b_{out}$ is the bias and $f_{out}$ is an activation function.
+\newline
+\newline
 We can see that $h_{t}$ stores information about previous computations in the RNN. This allows it to 'remember' information and re-use it in future calculations.
-
-\subsection{Vanishing and Exploding Gradients}
+\subsection{Backpropagation Through Time}
+Backpropagation through time (BPTT) is a modification of backpropagation designed to accomodate the recurrent nature of RNNs. The basic idea is to 'unroll' the RNN cell by treating each step in time of the cell as a feed-forward layer taking in the input $\textbf{x}_{t}$ and the previous hidden state $h_{t-1}$ as inputs. Backpropagation is then done as per feedforward neural networks on the 'unrolled' RNN (see ).
+\newline
+\newline
+Consider a single-cell RNN (as above) with a loss function $l(\hat{y}_{t}, y_{t})$, where $y_{t}$ is the target value at time $t$ that we are attempting to approximate with $\hat{y}_{t}$. Suppose we have a single input sequence $\textbf{x}$ of length $T$, whose elements are denoted by $x_{t}$ (i.e. $t$ runs from 1 to $T$), and that the we only score the final output $\hat{y}_{T}$. This could represent, for example, forecasting the next value in a time series of length $T$. By unrolling the network for each step forward in the sequence, we end up with a length $T$ feedforward network, to which we apply backpropagation to obtain $\partial l/\partial w_{hidden}$
+[the following equations need fixing...I forgot to differentiate with respect to the linear combinations inside non-linearities]
+\begin{equation}
+\frac{\partial l}{\partial w_{h}} = \frac{\partial l}{\partial \hat{y}_{T}} . \frac{\partial \hat{y}_{T}}{\partial h_{T}} \frac{h_{T}}{w_{h}}\label{eq:3}
+\end{equation}
+\begin{equation}
+\frac{\partial h_{T}}{\partial w_{h}} = \frac{\partial}{\partial w_{h}} \bigg(f_{h}(w_{in} x_{T} + w_{h} h_{T-1} + b_{h}) \bigg)
+\end{equation}
+The equation for $\partial h_{T}/ \partial w_{h}$ presents us with a new challenge as $h_{T-1}$ is a function of $w_{h}$. To tackle it, we use the product and chain rules of calculus
+\begin{equation}
+ \frac{\partial}{\partial w_{h}} \bigg(f_{h}(w_{in} x_{T} + w_{h} h_{T-1} + b_{h}) \bigg) = \frac{\partial f_{h|T}}{\partial w_{h}} \bigg( h_{T-1} + w_{h}  \frac{\partial h_{T-1}}{\partial w_{h}} \bigg)
+\end{equation}
+The bracketed term on the right hand side can be re-expressed as
+\begin{equation}
+h_{T-1} + w_{h}  \frac{\partial h_{T-1}}{\partial w_{h}} = \frac{\partial h_{T}}{\partial w_{h}} \bigg|_{h_{T-1}} + \frac{\partial h_{T}}{\partial h_{T-1}} \frac{\partial h_{T-1}}{\partial w_{h}}
+\end{equation}
+This can be generalised to any $t$ satisfying $0 < t \leq T$
+\begin{equation}
+\frac{\partial h_{t}}{\partial w_{h}} = \frac{\partial h_{t}}{\partial w_{h}} \bigg|_{h_{t-1}} + \frac{\partial h_{t}}{\partial h_{t-1}} \frac{\partial h_{t-1}}{\partial w_{h}}\label{eq:7}
+\end{equation}
+We can then use equation \ref{eq:7} to define equation \ref{eq:3} recursively, giving us the following
+\begin{equation}
+\frac{\partial l}{\partial w_{h}} = \frac{\partial l}{\partial \hat{y}_{T}} . \frac{\partial \hat{y}_{T}}{\partial h_{T}} \bigg( \frac{\partial f_{h|T}}{\partial w_{h}} \bigg( \frac{\partial h_{T}}{\partial w_{h}} \bigg|_{h_{T-1}} + \frac{\partial h_{T}}{\partial h_{T-1}} \frac{\partial h_{T-1}}{\partial w_{h}} \bigg) \bigg )\label{eq:8}
+\end{equation}
+By continuing to 'unroll' the recursive elements using equation \ref{eq:7}, we can re-express this as
+\begin{equation}
+\frac{\partial l}{\partial w_{h}} = \sum_{t=0}^{T-1}  \frac{\partial l}{\partial \hat{y}_{T}} . \frac{\partial \hat{y}_{T}}{\partial h_{T}}  \bigg( \prod_{\tau=0}^{t} \frac{\partial f_{h|T}}{\partial w_{h}} \frac{\partial h_{T - \tau}}{\partial h_{T - \tau-1}} \bigg ) \frac{\partial h_{T-t}}{\partial w_{h}} \bigg|_{h_{T-t-1}} \label{eq:9}
+\end{equation}
+\subsubsection{Truncated Backpropagation Through Time}
+\subsection{Issues with Vanilla RNNs}
+While in theory Vanilla RNNs can learn to utilise information from previous time-steps arbitrarily into the past, they tend to be limited to utilising information from more recent time-steps due to vanishing and exploding gradients (see \cite{298725} and \cite{279181}). 
+\newline
+\newline
+Vanishing and exploding gradients are due to the recurrent nature of RNNs. During training, as the recurrent networks look further and further back in time, the gradient becomes a long chain of multiplications that is prone to going to either $0$ or $\infty$. This can be made clear in equation \ref{eq:9} by focusing on the product term $\prod_{\tau=0}^{t} \frac{\partial h_{T - \tau}}{\partial h_{T - \tau-1}}$, which we can express as $\prod_{\tau=0}^{t} w_{h}=(w_{h})^t$. When $|w_{h}| < 1$, $\lim_{t \rightarrow \infty}(w_{h})^t = 0$ and when $|w_{h}| > 1$, $\lim_{t \rightarrow \infty}(w_{h})^t \rightarrow \pm \infty$.
+\newline
+\newline
+Extremely small gradients mean that learning will proceed slowly, if at all. Extremely large gradients lead to unstable learning that fails to converge. Either case makes training RNNs on long sequences quite difficult.
+\subsubsection{Gradient Clipping}
+Gradient clipping limits the maximum value a gradient can take, meaning it cannot increase without limit. Gradient norm clipping (see \cite{10.5555/3042817.3043083}) rescales the norm of a gradient to equal some value $\lambda_{threshold}$ whenever the norm of the gradient is greater than $\lambda_{threshold}$.
+\subsubsection{Moving Past Vanilla RNNs}
+While gradient clipping can help prevent exploding gradients, it doesn't help with vanishing gradients. More effective recurrent cells have been developped which address both vanishing and exploding gradients (to a degree); the Gated Recurrent Unit (GRU) and Long Short-Term Memory (LSTM) cell.
 
 \section{Gated Recurrent Units}
 
-Gated recurrent units (GRUs), proposed in \cite{DBLP:journals/corr/ChoMGBSB14}, are more complex than RNNs, but simpler than LSTMs (more on LSTMs below). For this reason they are discussed before LSTMs, despite being discovered after them.
+Gated recurrent units (GRUs), proposed in \cite{DBLP:journals/corr/ChoMGBSB14}, are more complex than RNNs, but simpler than LSTMs (more on LSTMs below). For this reason they are discussed before LSTMs, despite being discovered after them. As GRUs have fewer trainable parameters than LSTMs, they tend to perform better on smaller datasets than LSTMs.
 \newline
 \newline
 GRUs build on Vanilla RNNs by adding \textit{reset} and \textit{update} gates. As in the vanilla RNN case, we assume only one hidden unit. In this case, the reset gate is given by
 \begin{equation}
-r = f_{\sigma} \bigg( W_{r} \bullet \textbf{x}_{t}  + H_{r} \bullet h_{t-1} \bigg)
+r = f_{\sigma} \bigg( \textbf{w}_{r} \bullet \textbf{x}_{t}  + w_{reset} h_{t-1} + b_{reset}\bigg)
 \end{equation}
-where $r$ is the value of the reset gate, $W_{r}$ is a vector of weights applied to $x_{t}$, $H_{r}$ is a vector of weights applied to the hidden state $h_{t-1}$ and $f_{\sigma}$ is the sigmoid activation. The update gate is given by
+where $r$ is the value of the reset gate, $\textbf{w}_{r}$ is a vector of weights applied to $x_{t}$, $w_{reset}$ is the weights applied to the hidden state $h_{t-1}$ and $f_{\sigma}$ is the sigmoid activation. The update gate is given by
 \begin{equation}
-z = f_{\sigma} \bigg( W_{z} \bullet \textbf{x}_{t}  + H_{z} \bullet h_{t-1} \bigg)
+z = f_{\sigma} \bigg( \textbf{w}_{z} \bullet \textbf{x}_{t}  + w_{forget} h_{t-1} + b_{forget}\bigg)
 \end{equation}
 where $z$ is the value of the update gate and the remaining variables are defined similarly to those in the reset gate.
 \newline
@@ -57,29 +107,63 @@ h_{t} = zh_{t-1} + (1-z) \tilde{h}_{t}
 \end{equation}
 where $\tilde{h}_{t}$ is the \textit{candidate hidden state} and is defined as follows
 \begin{equation}
-\tilde{h}_{t} = f_{hidden}(W_{\tilde{h}} \bullet \textbf{x}_{t} + w_{\tilde{h}} r h_{t-1} + b_{\tilde{h}})
+\tilde{h}_{t} = f_{hidden}(\textbf{w}_{\tilde{h}} \bullet \textbf{x}_{t} + w_{\tilde{h}} r h_{t-1} + b_{\tilde{h}})
 \end{equation}
-When the reset gate $r$ is close to $0$, $\tilde{h}$ becomes independant of $h_{t-1}$ and there is greater emphasis on calculating $\tilde{h}$ using information from the input values $\textbf{x}_{t}$. The reset gate then determines how much the candidate hidden state relies on the previous hidden state. This helps to capture short-term dependencies \cite{zhang_lipton_li_smola}.
+When the reset gate $r$ is close to $0$, $\tilde{h}$ becomes independant of $h_{t-1}$ and there is greater emphasis on calculating $\tilde{h}$ using information from the input values $\textbf{x}_{t}$. The reset gate thus determines how much to 'forget' about previously stored information \cite{DBLP:journals/corr/ChoMGBSB14}. This helps to capture short-term dependencies \cite{zhang-lipton-li-smola}.
 \newline
 \newline
-When the update gate is close to $1$, the hidden state becomes independant of $\tilde{h}$. In other words, the update gate determines how much of the old state to retain in the new state. This helps to capture long-term dependencies \cite{zhang_lipton_li_smola}.
+When the update gate is close to $1$, the hidden state becomes independant of $\tilde{h}$. In other words, the update gate determines how much of the old state to retain in the new state. This helps to capture long-term dependencies \cite{zhang-lipton-li-smola}.
 
+\subsection{Minimal GRUs}
+A reduced version of the GRU, known as the Minimal GRU, was put forth in \cite{zhou2016minimal}. The Minimal GRU consolidates the update and reset gates of the GRU into a single gate by requiring $reset_{t} = forget_{t}$. The Minimal GRU first calculates the reset/forget gate, $z$, as follows
 
+\begin{equation}
+z_{t} = f_{\sigma} \bigg( \textbf{w}_{z} \bullet \textbf{x}_{t}  + w_{forget} h_{t-1} + b_{forget} \bigg)
+\end{equation}
+followed by the candidate hidden state and final hidden state
+\begin{equation}
+\tilde{h}_{t} = f_{hidden}(\textbf{w}_{\tilde{h}} \bullet \textbf{x}_{t} + w_{\tilde{h}} z_{t} h_{t-1} + b_{\tilde{h}}) 
+\end{equation}
+\begin{equation}
+h_{t} = zh_{t-1} + (1-z) \tilde{h}_{t}
+\end{equation}
+
+These are seen to be of the same form as the GRU equations, with $z$ substituted in place of $r$.
 
 \section{Long Short-Term Memory Cells}
-Long short-term memory (LSTM) neural networks build on the complexity of GRUs with an input gate, forget gate, output gate and memory cell. The input, forget and output gates are all calculated similarly as follows
+Long short-term memory (LSTM) neural networks are more complex than GRUs, mainly due to the addition of a memory cell and the output and hidden states being distinct. The basic LSTM includes an input gate, output gate, hidden state and a memory cell \cite{yu2019review}. A more complex form also includes a forget gate.
 \begin{equation}
-I_{t} = f_{sigma}(W_{input} \bullet \textbf{x}_{t} + H_{input} \bullet h_{t-1} + b_{input})
+I_{t} = f_{sigma}(\textbf{w}_{input} \bullet \textbf{x}_{t} + w_{input} h_{t-1} + b_{input})
 \end{equation}
 \begin{equation}
-F_{t} = f_{sigma}(W_{forget} \bullet \textbf{x}_{t} + H_{forget} \bullet h_{t-1} + b_{forget})
-\end{equation}
-\begin{equation}
-O_{t} = f_{sigma}(W_{output} \bullet \textbf{x}_{t} + H_{output} \bullet h_{t-1} + b_{output})
+O_{t} = f_{sigma}(\textbf{w}_{output} \bullet \textbf{x}_{t} + w_{output} h_{t-1} + b_{output})
 \end{equation}
 The candidate memory cell is given by
 \begin{equation}
-\tilde{C}_{t} = f_{tanh}(W_{\tilde{C}_{t}} \bullet \textbf{x}_{t} + H_{\tilde{C}} \bullet h_{t-1} + b_{\tilde{C}_{t}})
+\tilde{C}_{t} = f_{tanh}(\textbf{w}_{\tilde{C}_{t}} \bullet \textbf{x}_{t} + w_{\tilde{C}} h_{t-1} + b_{\tilde{C}_{t}})
+\end{equation}
+and the memory cell by
+\begin{equation}
+C_{t} = C_{t-1} + I_{t} \tilde{C}_{t}
+\end{equation}
+Finally, the hidden state is given by
+\begin{equation}
+H_{t} = O_{t}f_{tanh}(C_{t})
+\end{equation}
+
+\subsection{LSTM with Forget Gate}
+\begin{equation}
+I_{t} = f_{sigma}(\textbf{w}_{input} \bullet \textbf{x}_{t} + w_{input} h_{t-1} + b_{input})
+\end{equation}
+\begin{equation}
+F_{t} = f_{sigma}(\textbf{w}_{forget} \bullet \textbf{x}_{t} + w_{forget} h_{t-1} + b_{forget})
+\end{equation}
+\begin{equation}
+O_{t} = f_{sigma}(\textbf{w}_{output} \bullet \textbf{x}_{t} + w_{output} h_{t-1} + b_{output})
+\end{equation}
+The candidate memory cell is given by
+\begin{equation}
+\tilde{C}_{t} = f_{tanh}(\textbf{w}_{\tilde{C}_{t}} \bullet \textbf{x}_{t} + w_{\tilde{C}} h_{t-1} + b_{\tilde{C}_{t}})
 \end{equation}
 and the memory cell by
 \begin{equation}
@@ -90,12 +174,32 @@ Finally, the hidden state is given by
 H_{t} = O_{t}f_{tanh}(C_{t})
 \end{equation}
 See the Dive into Deep Learning book for an excellent explanation of LSTMs.
-\section{Backpropagation Through Time}
 
 \section{Bi-directional RNNs}
 
-
-\bibliography{refs}{}
 \bibliographystyle{plain}
+\bibliography{refs, thebibliography}
+
+\begin{comment}
+\begin{thebibliography}{1}
+	
+	\bibitem{bullinaria}
+	John~A Bullinaria.
+	\newblock Recurrent neural networks neural computation : Lecture 12, 2015.
+	\newblock Available at https://www.cs.bham.ac.uk/~jxb/INC/l12.pdf.
+	
+	\bibitem{DBLP:journals/corr/ChoMGBSB14}
+	Kyunghyun Cho, Bart van Merrienboer, {\c{C}}aglar G{\"{u}}l{\c{c}}ehre, Fethi
+	Bougares, Holger Schwenk, and Yoshua Bengio.
+	\newblock Learning phrase representations using {RNN} encoder-decoder for
+	statistical machine translation.
+	\newblock {\em CoRR}, abs/1406.1078, 2014.
+	
+	\bibitem{zhang-lipton-li-smola}
+	Aston Zhang, Zack~C Lipton, Mu~Li, and Alex~J Smola.
+	\newblock 9.1. gated recurrent units (gru).
+	\newblock Available at https://d2l.ai/chapter{\_}recurrent-modern/gru.html.
+\end{thebibliography}
+\end{comment}
 
 \end{document}

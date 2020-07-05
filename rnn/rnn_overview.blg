@@ -1,52 +1,61 @@
-This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
-Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: rnn_overview.aux
+Reallocating 'name_of_file' (item size: 1) to 6 items.
 The style file: plain.bst
+Reallocating 'name_of_file' (item size: 1) to 5 items.
+Reallocating 'name_of_file' (item size: 1) to 16 items.
+I couldn't open database file thebibliography.bib
+---line 23 of file rnn_overview.aux
+ : \bibdata{refs,thebibliography
+ :                              }
+I'm skipping whatever remains of this command
 Database file #1: refs.bib
-I was expecting a `,' or a `}'---line 40 of file refs.bib
+I was expecting a `,' or a `}'---line 45 of file refs.bib
  : 
- : @misc{zhang_lipton_li_smola, title={9.1. Gated Recurrent Units (GRU)}, note={Available at https://d2l.ai/chapter_recurrent-modern/gru.html}, journal={Dive into Deep Learning}, author={Zhang, Aston and Lipton, Zack C and Li, Mu and Smola, Alex J}}
+ : @misc{zhang_lipton_li_smola,
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-You've used 3 entries,
+Warning--I didn't find a database entry for "zhang-lipton-li-smola"
+You've used 7 entries,
             2118 wiz_defined-function locations,
-            515 strings with 4672 characters,
-and the built_in function-call counts, 894 in all, are:
-= -- 76
-> -- 63
-< -- 0
-+ -- 25
-- -- 22
-* -- 56
-:= -- 164
-add.period$ -- 9
-call.type$ -- 3
-change.case$ -- 20
+            546 strings with 5469 characters,
+and the built_in function-call counts, 3025 in all, are:
+= -- 308
+> -- 140
+< -- 2
++ -- 57
+- -- 48
+* -- 183
+:= -- 448
+add.period$ -- 21
+call.type$ -- 7
+change.case$ -- 45
 chr.to.int$ -- 0
-cite$ -- 3
-duplicate$ -- 24
-empty$ -- 62
-format.name$ -- 22
-if$ -- 176
+cite$ -- 7
+duplicate$ -- 132
+empty$ -- 220
+format.name$ -- 48
+if$ -- 677
 int.to.chr$ -- 0
-int.to.str$ -- 3
-missing$ -- 1
-newline$ -- 18
-num.names$ -- 6
-pop$ -- 30
+int.to.str$ -- 7
+missing$ -- 5
+newline$ -- 37
+num.names$ -- 14
+pop$ -- 53
 preamble$ -- 1
-purify$ -- 17
+purify$ -- 38
 quote$ -- 0
-skip$ -- 21
+skip$ -- 136
 stack$ -- 0
-substring$ -- 15
-swap$ -- 3
-text.length$ -- 0
+substring$ -- 189
+swap$ -- 67
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 12
+type$ -- 28
 warning$ -- 0
-while$ -- 6
-width$ -- 4
-write$ -- 32
-(There was 1 error message)
+while$ -- 20
+width$ -- 8
+write$ -- 77
+(There were 2 error messages)
